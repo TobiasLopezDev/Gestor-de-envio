@@ -1,0 +1,73 @@
+[12-May-2022 07:10:00 Europe/Berlin] PHP Fatal error:  Uncaught Error: Class 'app\views\components\menuComponents' not found in C:\xampp\htdocs\gestor-final\app\views\dashboard\index.php:7
+Stack trace:
+#0 C:\xampp\htdocs\gestor-final\app\libs\views.php(16): require_once()
+#1 C:\xampp\htdocs\gestor-final\app\libs\controllers.php(16): app\libs\Views->render('dashboard/index', Array)
+#2 C:\xampp\htdocs\gestor-final\app\controllers\dashboard.php(17): app\libs\Controllers->render('dashboard/index', Array)
+#3 C:\xampp\htdocs\gestor-final\app\libs\routes.php(61): app\controllers\Dashboard->index(Object(app\entity\userEntity))
+#4 [internal function]: {closure}()
+#5 C:\xampp\htdocs\gestor-final\vendor\bramus\router\src\Bramus\Router\Router.php(458): call_user_func_array(Object(Closure), Array)
+#6 C:\xampp\htdocs\gestor-final\vendor\bramus\router\src\Bramus\Router\Router.php(440): Bramus\Router\Router->invoke(Object(Closure), Array)
+#7 C:\xampp\htdocs\gestor-final\vendor\bramus\router\src\Bramus\Router\Router.php(287): Bramus\Router\Router->handle(Array, true)
+#8 C:\xampp\ in C:\xampp\htdocs\gestor-final\app\views\dashboard\index.php on line 7
+[12-May-2022 07:10:26 Europe/Berlin] PHP Notice:  Undefined property: app\libs\Views::$ordersUnshipping in C:\xampp\htdocs\gestor-final\app\views\dashboard\index.php on line 31
+[12-May-2022 07:10:26 Europe/Berlin] PHP Notice:  Undefined property: app\libs\Views::$ordersShipped in C:\xampp\htdocs\gestor-final\app\views\dashboard\index.php on line 32
+[12-May-2022 07:10:26 Europe/Berlin] PHP Notice:  Undefined property: app\libs\Views::$tiendaNube in C:\xampp\htdocs\gestor-final\app\views\dashboard\index.php on line 278
+[12-May-2022 07:10:26 Europe/Berlin] PHP Warning:  sizeof(): Parameter must be an array or an object that implements Countable in C:\xampp\htdocs\gestor-final\app\views\dashboard\index.php on line 279
+[12-May-2022 07:10:58 Europe/Berlin] PHP Notice:  Undefined index: user in C:\xampp\htdocs\gestor-final\app\libs\routes.php on line 57
+[12-May-2022 07:10:58 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to app\controllers\Dashboard::__construct() must be an instance of app\entity\userEntity, bool given, called in C:\xampp\htdocs\gestor-final\app\libs\routes.php on line 59 and defined in C:\xampp\htdocs\gestor-final\app\controllers\dashboard.php:8
+Stack trace:
+#0 C:\xampp\htdocs\gestor-final\app\libs\routes.php(59): app\controllers\Dashboard->__construct(false)
+#1 [internal function]: {closure}()
+#2 C:\xampp\htdocs\gestor-final\vendor\bramus\router\src\Bramus\Router\Router.php(458): call_user_func_array(Object(Closure), Array)
+#3 C:\xampp\htdocs\gestor-final\vendor\bramus\router\src\Bramus\Router\Router.php(440): Bramus\Router\Router->invoke(Object(Closure), Array)
+#4 C:\xampp\htdocs\gestor-final\vendor\bramus\router\src\Bramus\Router\Router.php(287): Bramus\Router\Router->handle(Array, true)
+#5 C:\xampp\htdocs\gestor-final\app\libs\routes.php(70): Bramus\Router\Router->run()
+#6 C:\xampp\htdocs\gestor-final\index.php(13): require('C:\\xampp\\htdocs...')
+#7 {main}
+  thrown in C:\xampp\htdocs\gestor-final\app\controllers\dashboard.php on line 8
+[12-May-2022 07:11:00 Europe/Berlin] PHP Notice:  Undefined property: app\libs\Views::$ordersUnshipping in C:\xampp\htdocs\gestor-final\app\views\dashboard\index.php on line 31
+[12-May-2022 07:11:00 Europe/Berlin] PHP Notice:  Undefined property: app\libs\Views::$ordersShipped in C:\xampp\htdocs\gestor-final\app\views\dashboard\index.php on line 32
+[12-May-2022 07:11:00 Europe/Berlin] PHP Notice:  Undefined property: app\libs\Views::$tiendaNube in C:\xampp\htdocs\gestor-final\app\views\dashboard\index.php on line 278
+[12-May-2022 07:11:00 Europe/Berlin] PHP Warning:  sizeof(): Parameter must be an array or an object that implements Countable in C:\xampp\htdocs\gestor-final\app\views\dashboard\index.php on line 279
+[12-May-2022 07:11:24 Europe/Berlin] PHP Notice:  Undefined property: app\libs\Views::$ordersUnshipping in C:\xampp\htdocs\gestor-final\app\views\dashboard\index.php on line 31
+[12-May-2022 07:11:24 Europe/Berlin] PHP Notice:  Undefined property: app\libs\Views::$ordersShipped in C:\xampp\htdocs\gestor-final\app\views\dashboard\index.php on line 32
+[12-May-2022 07:11:24 Europe/Berlin] PHP Notice:  Undefined property: app\libs\Views::$tiendaNube in C:\xampp\htdocs\gestor-final\app\views\dashboard\index.php on line 278
+[12-May-2022 07:11:24 Europe/Berlin] PHP Warning:  sizeof(): Parameter must be an array or an object that implements Countable in C:\xampp\htdocs\gestor-final\app\views\dashboard\index.php on line 279
+[12-May-2022 07:11:43 Europe/Berlin] PHP Notice:  Undefined property: app\libs\Views::$ordersUnshipping in C:\xampp\htdocs\gestor-final\app\views\dashboard\index.php on line 31
+[12-May-2022 07:11:43 Europe/Berlin] PHP Notice:  Undefined property: app\libs\Views::$ordersShipped in C:\xampp\htdocs\gestor-final\app\views\dashboard\index.php on line 32
+[12-May-2022 07:11:43 Europe/Berlin] PHP Notice:  Undefined property: app\libs\Views::$tiendaNube in C:\xampp\htdocs\gestor-final\app\views\dashboard\index.php on line 278
+[12-May-2022 07:11:43 Europe/Berlin] PHP Warning:  sizeof(): Parameter must be an array or an object that implements Countable in C:\xampp\htdocs\gestor-final\app\views\dashboard\index.php on line 279
+[12-May-2022 07:11:45 Europe/Berlin] PHP Notice:  Undefined property: app\libs\Views::$ordersUnshipping in C:\xampp\htdocs\gestor-final\app\views\dashboard\index.php on line 31
+[12-May-2022 07:11:45 Europe/Berlin] PHP Notice:  Undefined property: app\libs\Views::$ordersShipped in C:\xampp\htdocs\gestor-final\app\views\dashboard\index.php on line 32
+[12-May-2022 07:11:45 Europe/Berlin] PHP Notice:  Undefined property: app\libs\Views::$tiendaNube in C:\xampp\htdocs\gestor-final\app\views\dashboard\index.php on line 278
+[12-May-2022 07:11:45 Europe/Berlin] PHP Warning:  sizeof(): Parameter must be an array or an object that implements Countable in C:\xampp\htdocs\gestor-final\app\views\dashboard\index.php on line 279
+[12-May-2022 07:12:04 Europe/Berlin] PHP Notice:  Undefined property: app\libs\Views::$tiendaNube in C:\xampp\htdocs\gestor-final\app\views\dashboard\index.php on line 278
+[12-May-2022 07:12:04 Europe/Berlin] PHP Warning:  sizeof(): Parameter must be an array or an object that implements Countable in C:\xampp\htdocs\gestor-final\app\views\dashboard\index.php on line 279
+[12-May-2022 07:14:34 Europe/Berlin] PHP Warning:  Creating default object from empty value in C:\xampp\htdocs\gestor-final\app\controllers\login.php on line 13
+[12-May-2022 07:14:38 Europe/Berlin] PHP Notice:  Undefined index: user in C:\xampp\htdocs\gestor-final\app\libs\routes.php on line 61
+[12-May-2022 07:14:38 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to app\controllers\Dashboard::__construct() must be an instance of app\entity\userEntity, bool given, called in C:\xampp\htdocs\gestor-final\app\libs\routes.php on line 63 and defined in C:\xampp\htdocs\gestor-final\app\controllers\dashboard.php:8
+Stack trace:
+#0 C:\xampp\htdocs\gestor-final\app\libs\routes.php(63): app\controllers\Dashboard->__construct(false)
+#1 [internal function]: {closure}()
+#2 C:\xampp\htdocs\gestor-final\vendor\bramus\router\src\Bramus\Router\Router.php(458): call_user_func_array(Object(Closure), Array)
+#3 C:\xampp\htdocs\gestor-final\vendor\bramus\router\src\Bramus\Router\Router.php(440): Bramus\Router\Router->invoke(Object(Closure), Array)
+#4 C:\xampp\htdocs\gestor-final\vendor\bramus\router\src\Bramus\Router\Router.php(287): Bramus\Router\Router->handle(Array, true)
+#5 C:\xampp\htdocs\gestor-final\app\libs\routes.php(74): Bramus\Router\Router->run()
+#6 C:\xampp\htdocs\gestor-final\index.php(13): require('C:\\xampp\\htdocs...')
+#7 {main}
+  thrown in C:\xampp\htdocs\gestor-final\app\controllers\dashboard.php on line 8
+[12-May-2022 07:14:42 Europe/Berlin] PHP Warning:  Creating default object from empty value in C:\xampp\htdocs\gestor-final\app\controllers\login.php on line 13
+[12-May-2022 07:14:45 Europe/Berlin] PHP Warning:  Creating default object from empty value in C:\xampp\htdocs\gestor-final\app\controllers\login.php on line 13
+[12-May-2022 07:14:45 Europe/Berlin] LoginModel::login -> Success
+[12-May-2022 07:15:30 Europe/Berlin] PHP Notice:  Undefined index: user in C:\xampp\htdocs\gestor-final\app\libs\routes.php on line 61
+[12-May-2022 07:15:30 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to app\controllers\Dashboard::__construct() must be an instance of app\entity\userEntity, bool given, called in C:\xampp\htdocs\gestor-final\app\libs\routes.php on line 63 and defined in C:\xampp\htdocs\gestor-final\app\controllers\dashboard.php:8
+Stack trace:
+#0 C:\xampp\htdocs\gestor-final\app\libs\routes.php(63): app\controllers\Dashboard->__construct(false)
+#1 [internal function]: {closure}()
+#2 C:\xampp\htdocs\gestor-final\vendor\bramus\router\src\Bramus\Router\Router.php(458): call_user_func_array(Object(Closure), Array)
+#3 C:\xampp\htdocs\gestor-final\vendor\bramus\router\src\Bramus\Router\Router.php(440): Bramus\Router\Router->invoke(Object(Closure), Array)
+#4 C:\xampp\htdocs\gestor-final\vendor\bramus\router\src\Bramus\Router\Router.php(287): Bramus\Router\Router->handle(Array, true)
+#5 C:\xampp\htdocs\gestor-final\app\libs\routes.php(74): Bramus\Router\Router->run()
+#6 C:\xampp\htdocs\gestor-final\index.php(13): require('C:\\xampp\\htdocs...')
+#7 {main}
+  thrown in C:\xampp\htdocs\gestor-final\app\controllers\dashboard.php on line 8

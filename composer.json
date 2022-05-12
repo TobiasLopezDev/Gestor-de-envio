@@ -1,0 +1,14 @@
+{
+    "name": "tobias/gestor-envios",
+    "description": "App de gestion de envio",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "app\\": "app/"
+        }
+    },
+    "require": {
+        "bramus/router": "^1.6",
+        "vlucas/phpdotenv": "^5.4"
+    }
+}
