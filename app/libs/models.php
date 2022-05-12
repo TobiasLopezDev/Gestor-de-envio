@@ -57,20 +57,6 @@ class Models
        return $this -> TiendaNube -> closeCURL();
    }
 
-   function ordersFilterBy($params , $filter , $value){
 
-       $nparams = sizeof($params);
-
-       $newparams = [];
-       for ($i=0; $i < $nparams; $i++) { 
-           
-               if ($params[$i][$filter] == $value){
-                   array_push($newparams, $params[$i]);
-               }
-
-       }
-       return $newparams;
-   }
-   
 
 }
