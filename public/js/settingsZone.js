@@ -20,7 +20,7 @@ var zonaselect = new TomSelect('#select-role', {
 
 window.onload = async function () {
 
-    let request = await getZonesAsync('http://localhost/aaa/settings/getAllZone');
+    let request = await getZonesAsync('http://localhost/gestor-final/settings/getallzone');
 
     for (i = 0; request.length > i; i++) {
 
@@ -49,7 +49,7 @@ btnCreateZona.addEventListener('click', async function () {
     params.append('zonesSelected',valores);
     params.append('zonesName' , nombreZone)
 
-    let request = await sendZonesAsync('http://localhost/aaa/settings/createZone', params);
+    let request = await sendZonesAsync('http://localhost/gestor-final/settings/createZone', params);
 
     if(request.status == 201){
         location.reload();

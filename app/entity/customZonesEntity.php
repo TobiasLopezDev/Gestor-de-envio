@@ -4,6 +4,7 @@ namespace app\entity;
 use PDO;
 use PDOException;
 use app\libs\Models;
+use app\libs\apiBrasil;
 
 class customZonesEntity extends Models {
 
@@ -40,7 +41,7 @@ class customZonesEntity extends Models {
         }
     }
 
-    function getCustomZone(){
+    function getCustomZoneSettings(){
         try{
             $this -> setting_key = "Custom_Zone";
 
@@ -70,7 +71,7 @@ class customZonesEntity extends Models {
 
     function getArrayAllZones(){
 
-        $custom_zones = $this -> getCustomZone();
+        $custom_zones = $this -> getCustomZoneSettings();
 
         $todasZonas = [];
 
@@ -110,5 +111,45 @@ class customZonesEntity extends Models {
         return $order;
         
     }
+
+    function getAllZoneApi(){
+        $this -> brasil = new apiBrasil;
+        $this -> brasil -> createApi(3550308);
+        $this -> brasil -> setGETCURL();
+        $allZones = $this -> brasil -> executeCURL();
+        $this -> brasil -> closeCURL();
+
+        $customZones = $this -> getArrayAllZones();
+
+        $request = $this -> filterAllZone($allZones , $customZones );
+
+        return $request;
+    }
+
+    function filterAllZone($allZones , $customZones = []){
+        
+        $arrayAllZones = json_decode($allZones , true);
+
+        for ($i=0; $i < sizeof($arrayAllZones); $i++) { 
+            
+            for ($x=0; $x < sizeof($customZones); $x++) { 
+
+                foreach( $customZones[$x]['zonas'] as $zona){
+
+                    if($arrayAllZones[$i]['nome']  ==  $zona){
+                        array_splice($arrayAllZones, $i, 1);
+                    }
+
+                }
+
+            }            
+
+        }
+
+        return json_encode($arrayAllZones);
+        
+
+    }
+    
     
 }

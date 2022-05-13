@@ -6,6 +6,8 @@ use app\controllers\dashboard;
 use app\controllers\orders;
 use app\controllers\single;
 
+use app\controllers\settings;
+
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__.'/../config');
 $dotenv->load();
@@ -118,6 +120,36 @@ $router -> get('/single/{orderId}', function($orderId){
 
 });
 
+$router->before('GET|POST', '/settings' ,function() { 
+    global $user;
+    if(!$user){
+        header('location: '.$_ENV['URL']);
+    }
+});
+
+$router -> get('/settings', function(){
+    global $user;
+
+    $controller = new settings($user);
+
+    $controller -> index();
+
+});
+
+$router -> get('/settings/getallzone', function (){
+    header("HTTP/1.1 200 OK");
+    header('Content-Type: application/json; charset=utf-8');
+    global $user;
+    $controller = new settings($user);
+
+   echo ($controller -> getAllZone());
+});
+
+$router -> post('/settings/createZone', function (){
+    global $user;
+    $controller = new settings($user);
+    $controller -> createZone();
+});
 
 
 
