@@ -17,7 +17,7 @@ deleteBtn.onclick = async function () {
     loader.style.display = 'block'
     modalBody.style.display = 'none'
 
-    let request = await deleteFulfillmentsAsync('http://localhost/aaa/single/deletefulfillments' , params );
+    let request = await deleteFulfillmentsAsync('http://localhost/gestor-final/single/deletefulfillments' , params );
 
     loader.style.display = 'none'
 

@@ -42,7 +42,7 @@ formCreateFulfillment.addEventListener('submit', async function (e) {
     console.log(params.values())
 
     if (valideteForm(params)) {
-       let response = await asynPOST('http://localhost/aaa/single/postFulfillments', params);
+       let response = await asynPOST('http://localhost/gestor-final/single/postFulfillments', params);
        if(response.status == 201){
         location.reload();
        }

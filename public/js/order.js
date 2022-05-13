@@ -94,7 +94,7 @@ createExcelBtn.addEventListener('click', function () {
     params.append('orders', ordersAction);
     params.append('filters', options);
 
-    asyncCreateCExcel('http://localhost/aaa/orders/genXLSX', params);
+    asyncCreateCExcel('http://localhost/gestor-final/orders/genXLSX', params);
 
 });
 

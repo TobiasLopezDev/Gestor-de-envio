@@ -48,7 +48,7 @@ document.getElementById("tracking_number").addEventListener('submit',function (e
     console.log(document.getElementById('checkTracking').getAttribute('value'));
     console.log(document.getElementById('checkNotification').getAttribute('value'));
 
-    asynPOST('http://localhost/aaa/single/createshipping' , params );
+    asynPOST('http://localhost/gestor-final/single/createshipping' , params );
 
 }  ); 
 

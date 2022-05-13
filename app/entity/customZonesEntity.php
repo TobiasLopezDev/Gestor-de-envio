@@ -72,7 +72,8 @@ class customZonesEntity extends Models {
     function getArrayAllZones(){
 
         $custom_zones = $this -> getCustomZoneSettings();
-
+        
+        
         $todasZonas = [];
 
         for ($i=0; $i < sizeof($custom_zones) ; $i++) { 
@@ -81,6 +82,8 @@ class customZonesEntity extends Models {
             
             array_push($todasZonas , $zona);
         }
+
+        
 
         return $todasZonas;
 

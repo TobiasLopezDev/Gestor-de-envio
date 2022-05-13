@@ -3,6 +3,11 @@ use app\views\headerTemplate;
 use app\views\footerTemplate;
 use app\views\components\menu;
 
+
+use app\views\single\components\createFulfillments;
+use app\views\single\components\fulfillments;
+use app\views\single\components\modalDeleteFulfillments;
+
 new headerTemplate('Single');
 new menu();
 
@@ -93,13 +98,8 @@ $order = $this-> data['order'];
                         </div>
                     </div>
 
-                    <pre><?php var_dump($order) ?></pre>
-
                     <!-- Create Shipping -->
                     <?php if ($order['shipping_status'] === 'unshipped'){require_once 'components/createShipping.php' ;}?>
-
-
-
 
 
                     <!-- FIXME: AL RELOAD GENERA UN SHIPPING TRACKED NUMBER -->
@@ -107,11 +107,10 @@ $order = $this-> data['order'];
 
 
 
-                <?php if ($order['next_action'] === 'close'):?>
+                <?php if ($order['shipping_status'] === 'shipped'):?>
                 <link rel="stylesheet" href="<?php echo $_ENV['URL']?>/public/css/fulfillments.css">
                 <div class="h-auto w-full p-4">
-                    <?php require_once 'components/fulfillments.php' ;?>
-                    <?php //require_once 'components/createFulfillments.php' ;?>
+                    <?php new fulfillments($this-> data);?>
                 </div>
                 <?php endif;?>
 
@@ -125,7 +124,7 @@ $order = $this-> data['order'];
 
 </main>
 
-<?php require_once 'components/modalDeleteFulfillments.php'; ?>
+<?php new modalDeleteFulfillments(); ?>
 
 
 <?php  new footerTemplate(); ?>

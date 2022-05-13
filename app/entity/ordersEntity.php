@@ -48,6 +48,7 @@ class ordersEntity extends Models{
     }
 
     function addCustomZonesToOrdes($orders){
+        
 
         $nparams = sizeof($orders);
 
@@ -57,11 +58,13 @@ class ordersEntity extends Models{
 
         $todasZonas = $customZones -> getArrayAllZones();
 
+        
 
         for ($i=0; $i < $nparams; $i++) { 
-            for($x = 0 ; $x < sizeof($todasZonas) ; $x++){
 
-                foreach($todasZonas[$x]['zonas'] as $key => $value){
+            for($x = 0 ; $x < sizeof($todasZonas) ; $x++){
+        
+                foreach($todasZonas[$x]['zonas'] as $value){
 
                     if ($value == $orders[$i]['shipping_address']['locality']){
                         $orders[$i]['custom_zone'] = $todasZonas[$x]['nombre'];
