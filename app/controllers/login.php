@@ -10,7 +10,6 @@ class login extends controllers{
     function __construct()
     {
         parent::__construct();
-        $this -> view -> username = '';
         $this -> model = new loginModel;
     }
 

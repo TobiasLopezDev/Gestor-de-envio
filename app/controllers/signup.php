@@ -22,6 +22,8 @@ class signUp extends Controllers{
 
             if ($username == '' || empty($username) || $email == '' || empty($email) || $password == '' || empty($password) ){
                 // $this->redirect('signup' , ['error' => ErrorMessages::ERROR_SIGNUP_NEWUSER_EMPTY]);
+                $this->redirect('signup' , ['error' => 'completa los campos imbecil']);
+
                 // TODO:redireccionar a signup error vacio
             }
 
@@ -36,7 +38,7 @@ class signUp extends Controllers{
             if($user -> exists($username) ){
                 // $this->redirect("signup" , ['error' => ErrorMessages::ERROR_SIGNUP_NEWUSER_USERNAME_EXISTS]);
                 // TODO:redireccionar a signup usernameExits
-
+                $this->redirect('signup' , ['error' => 'Ya existe el usuario']);
                
             }
             else{
@@ -48,6 +50,7 @@ class signUp extends Controllers{
                 else{
                     // $this->redirect("signup" , ['error' => ErrorMessages::ERROR_SIGNUP_NEWUSER_SAVE_ERROR]);
                     // TODO: Erro de guardado
+                    $this->redirect('signup' , ['error' => 'LLAMA YA AL DEV MOSTRO']);
                 }
             }
 
@@ -57,6 +60,8 @@ class signUp extends Controllers{
         }else{
 
             // $this->redirect("signup" , ['error' => ErrorMessages::ERROR_SIGNUP_NEWUSER]);
+
+            $this->redirect('signup' , ['error' => 'perdon que estas haciendo?']);
 
         }
 
