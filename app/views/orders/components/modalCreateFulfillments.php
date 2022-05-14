@@ -27,12 +27,10 @@ class modalCreateFulfillments{
             <div class="mt-2 text-center">
                 <form id="form-create-fulfillment" method="post">
 
-                    <input type="hidden" name="inputOrderId" value="" id="orderIdForm">
-
                     <div class="form-group mb-6">
                         <select
                             class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none disabled:opacity-75 disabled:bg-gray-100"
-                            id="inputStatus" name="inputStatus" aria-describedby="inputStatus"
+                            id="inputStatus" name="inputStatus" aria-invalid="" aria-describedby="inputStatus"
                             placeholder="Shipping Tracker Code">
                             <option value="" selected>Seleccionar...</option>
                             <option value="dispatched">Despachado</option>
@@ -49,10 +47,8 @@ class modalCreateFulfillments{
                         </select>
                     </div>
                     <div class="form-group  mb-6">
-                        <textarea type="text"
-                            class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none disabled:opacity-75 disabled:bg-gray-100"
-                            id="inputDescription" name="inputDescription" aria-describedby="inputDescription"
-                            placeholder="Description"></textarea>
+                        <textarea type="text" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none disabled:opacity-75 disabled:bg-gray-100" id="inputDescription" name="inputDescription"
+                            aria-invalid="" aria-describedby="inputDescription" placeholder="Description"></textarea>
                     </div>
                     <div class="flex wrap">
 
@@ -60,20 +56,23 @@ class modalCreateFulfillments{
                         <div class="form-group w-1/2 mr-3 mb-6">
                             <input type="text"
                                 class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none disabled:opacity-75 disabled:bg-gray-100"
-                                id="inputCity" name="inputCity" aria-describedby="inputCity" placeholder="Ciudad">
+                                id="inputCity" name="inputCity" aria-invalid="" aria-describedby="inputCity"
+                                placeholder="Ciudad">
                         </div>
 
                         <div class="form-group w-1/2 ml-3 mb-6">
                             <input type="text"
                                 class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none disabled:opacity-75 disabled:bg-gray-100"
-                                id="inputState" name="inputState" aria-describedby="inputState" placeholder="Provincia">
+                                id="inputState" name="inputState" aria-invalid="" aria-describedby="inputState"
+                                placeholder="Provincia">
                         </div>
                     </div>
 
                     <div class="form-group mb-6">
                         <input type="text"
                             class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none disabled:opacity-75 disabled:bg-gray-100"
-                            id="inputCountry" name="inputCountry" aria-describedby="inputCountry" placeholder="Pais">
+                            id="inputCountry" name="inputCountry" aria-invalid="" aria-describedby="inputCountry"
+                            placeholder="Pais">
                     </div>
 
                     <div class="flex wrap">

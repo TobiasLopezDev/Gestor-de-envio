@@ -35,42 +35,34 @@ class fulfillmentsEntity extends Models
         return $fulfillmentsData;
     }
 
-    // function postFulfillments()
-    // {
+    function postFulfillments($ordersId, $data)
+    {
+        $success = [];
+        $errores = [];
 
-    //     header('Content-Type: application/json');
+        foreach ($ordersId as $value) {
+            $urlFulfill = 'orders/'. $value . '/fulfillments'; 
+            $this->prepareAPIPost($this->id_tienda, $urlFulfill, $data);
 
-    //     if ($this->existPOST(['inputOrderId', 'inputDescription', 'inputCity', 'inputState', 'inputCountry', 'inputHappendAt', 'inputEstimated'])) {
+            $fulfillmentData = $this->executeAPI();
+            if(isset($fulfillmentData['code'])){
+                 array_push($errores , ['code' => 404 , 'order' => $value , 'data' => $fulfillmentData]) ;
+            }else{
+                array_push($success , ['code' => 200 , 'order' => $value , 'data' => $fulfillmentData]) ;
+            }
+            
+        }
 
-    //         $orderId = $this->getPost('inputOrderId');
+        if(sizeof($errores) > 0){
+            $res = ['code' => 403 , 'errores' => $errores , 'success'=> $success];
+        }else{
+            $res = ['code' => 201 , 'success'=> $success];
+        }
 
-    //         $urlFulfill = 'orders/' . $orderId . '/fulfillments';
+        return $res;
+    }
 
-    //         $data =
-    //             '{
-    //         "status": "' . $this->getPost('inputStatus') . '",
-    //         "description": "' . $this->getPost('inputDescription') . '",
-    //         "city": "' . $this->getPost('inputCity') . '",
-    //         "province": "' . $this->getPost('inputState') . '",
-    //         "country": "' . $this->getPost('inputCountry') . '",
-    //         "happened_at": "' . $this->getPost('inputHappendAt') . '",
-    //         "estimated_delivery_at": "' . $this->getPost('inputEstimated') . '"
-    //     }';
-
-    //         $idTienda = $this->getUserSessionData()->getTienda();
-
-    //         $this->prepareAPIPost($idTienda, $urlFulfill, $data);
-
-    //         $fulfillmentData = $this->executeAPI();
-
-    //         $res = ['status' => 201, 'data' => $fulfillmentData];
-
-    //         echo json_encode($res);
-    //         return;
-    //     }
-    // }
-
-    function deletefulfillments($orderId , $fulfillmentsId)
+    function deletefulfillments($orderId, $fulfillmentsId)
     {
         header('Content-Type: application/json');
 
@@ -83,7 +75,6 @@ class fulfillmentsEntity extends Models
         $res = ['status' => 201, 'data' => $fulfillmentData];
 
         return $res;
-        
     }
 
     //TODO: generar las create en masa

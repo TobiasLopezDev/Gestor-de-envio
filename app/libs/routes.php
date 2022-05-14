@@ -110,8 +110,18 @@ $router -> post('/orders/createShippings', function(){
     $user = unserialize($_SESSION['user']);
     
     $controller = new orders($user);
-
+    
     $controller -> createShippings($_POST);
+    
+});
+
+$router -> post('/orders/createFulfillments', function(){
+    
+    $user = unserialize($_SESSION['user']);
+    
+    $controller = new orders($user);
+
+    $controller -> createFulfillments($_POST);
     
 });
 

@@ -41,7 +41,7 @@ formCreateFulfillment.addEventListener('submit', async function (e) {
     console.log("validando...")
     console.log(params.values())
 
-    if (valideteForm(params)) {
+    if (valideteFormFulfillments(params)) {
        let response = await asynPOST('http://localhost/gestor-final/single/postFulfillments', params);
        if(response.status == 201){
         location.reload();
@@ -125,31 +125,32 @@ window.onload = function () {
     });
 };
 
-function valideteForm(formData) {
-    inputNoValidate = [];
+// function valideteFormFulfillments(formData) {
+//     inputNoValidate = [];
 
-    for (var key of formData.keys()) {
-        console.log(key  + ':'+ formData.get(key))
-        if (key == 'inputDescription') {
+//     for (var key of formData.keys()) {
+//         if (key == 'inputDescription') {
             
-        }
-        else {
-            if (formData.get(key) == '') {
-                inputNoValidate.push(key)
-                document.getElementById(key).setAttribute("aria-invalid", "true");
-            }
-        }
-    }
+//         }
+//         else {
+//             if (formData.get(key) == '') {
+//                 inputNoValidate.push(key)
+//                 document.getElementById(key).setAttribute("aria-invalid", "true");
+//                 document.getElementById(key).classList.add("border-red-700");
+//                 console.log(key + "add class" )
+//             }
+//         }
+//     }
 
-    if (inputNoValidate.length > 0) {
-        console.log(inputNoValidate)
-        return false
-    }
-    else {
-        console.log(inputNoValidate)
-        return true;
-    }
+//     if (inputNoValidate.length > 0) {
+//         console.log(inputNoValidate)
+//         return false
+//     }
+//     else {
+//         console.log(inputNoValidate)
+//         return true;
+//     }
 
-}
+// }
 
 
