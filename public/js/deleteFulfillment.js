@@ -10,7 +10,7 @@ deleteBtn.onclick = async function () {
     let params = new FormData();
 
     params.append('order_id', modal.dataset.orderId);
-    params.append('fulfillments_id', modal.dataset.fulfillmentId);
+    params.append('fulfillments_id', modal.dataset.fulfillmentId); 
 
     console.log(params.values())
 
@@ -29,7 +29,9 @@ deleteBtn.onclick = async function () {
     }
 
 
-
+   
+    modalBody.style.display = 'block';
+    loader.style.display = 'none';
     modal.style.display = "none";
     document.getElementById("body").style.overflowY = "scroll";
 }

@@ -1,5 +1,6 @@
 var infoShipping = document.getElementById("tableBodyOrders");
 var arrows = document.getElementsByClassName("arrow-hidden");
+
 let modalExcel = document.getElementById("modalExcelGen");
 let createExcelBtn = document.getElementById("createExcel-btn-modal");
 let cancelExcelBtn = document.getElementById("cancelExcel-btn-modal");
@@ -10,14 +11,13 @@ async function asynGET(url) {
 
 
         .then(response => {
-            console.log("STATUS ES:" + response.status)
-            console.log("data ES:" + response.data)
-            console.log(response)
+            // console.log("STATUS ES:" + response.status)
+            // console.log("data ES:" + response.data)
+            // console.log(response)
             return true;
         });
 
 }
-
 
 for (var i = 0; i < arrows.length; i++) {
     arrows[i].addEventListener('click', hiddenShowElement, false);
@@ -37,43 +37,7 @@ function hiddenShowElement() {
 var actionBtn = document.getElementById("actionButton");
 var action = document.getElementById("actionSelect");
 
-actionBtn.addEventListener('click', function () {
 
-    if (action.value == '' && action.value == 0) {
-        document.getElementById("p-action").innerHTML = 'Por favor seleccione una accion'
-        document.getElementById("p-action").classList.remove('hidden')
-        action.focus();
-    } else {
-        document.getElementById("p-action").classList.add('hidden')
-        console.log(action.value);
-
-        var checkboxes = document.querySelectorAll('.checkboxDataTableShipped');
-
-        checkedItems = [];
-
-        for (const item of checkboxes) {
-            if (item.checked) {
-
-                const itemPadre = item.parentNode;
-                checkedItems.push(itemPadre.dataset.orderId);
-            }
-        }
-
-        if (checkedItems != '') {
-            console.log(checkedItems);
-
-            modalExcel.style.display = "flex";
-            modalExcel.dataset.orders = checkedItems;
-            modalExcel.scrollIntoView();
-        }
-        else {
-            document.getElementById("p-action").innerHTML = 'Por favor seleccione ordenes para ejecutar'
-            document.getElementById("p-action").classList.remove('hidden')
-            action.focus();
-        }
-    }
-
-})
 
 createExcelBtn.addEventListener('click', function () {
 
@@ -120,7 +84,7 @@ $(document).ready(function () {
 
     $('#tableBodyOrdersEnvios tfoot .searchable').each(function () {
         var title = $(this).html();
-        console.log(title);
+        // console.log(title);
         $(this).html('<input type="text" placeholder="Buscar ' + title +
             '"  style="margin:auto !important;" class="form-control block w-2/3 m-auto px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none disabled:opacity-75 disabled:bg-gray-100"/>'
         );
@@ -204,4 +168,65 @@ $(document).ready(function () {
 
 
     });
+
+    actionBtn.addEventListener('click', function () {
+
+        if (action.value == '' && action.value == 0) {
+            document.getElementById("p-action").innerHTML = 'Por favor seleccione una accion'
+            document.getElementById("p-action").classList.remove('hidden')
+            action.focus();
+        } else {
+            document.getElementById("p-action").classList.add('hidden')
+            // console.log(action.value);
+    
+            var checkboxes = document.querySelectorAll('.checkboxDataTableShipped');
+    
+            checkedItems = [];
+    
+            for (const item of checkboxes) {
+                if (item.checked) {
+    
+                    const itemPadre = item.parentNode;
+                    checkedItems.push(itemPadre.dataset.orderId);
+                }
+            }
+    
+            if (checkedItems != '') {
+                console.log(checkedItems);
+                console.log(action.value);
+    
+                switch (action.value) {
+                    case "1":
+                        console.log("case 1")
+                        modalExcel.style.display = "flex";
+                        modalExcel.dataset.orders = checkedItems;
+                        modalExcel.scrollIntoView();
+                        break;
+                
+                    case "2":
+                        console.log("case 2")
+                        modalPdf.style.display = "flex";
+                        modalPdf.dataset.orders = checkedItems;
+                        modalPdf.scrollIntoView();
+                        break;
+                        
+                    case "3":
+                        console.log("case 3")
+                        modalFulfillments.dataset.orders = checkedItems;
+                        modalFulfillments.style.display = "flex";
+                        modalFulfillments.scrollIntoView();
+                        break;
+    
+                    default:
+                        break;
+                }
+            }
+            else {
+                document.getElementById("p-action").innerHTML = 'Por favor seleccione ordenes para ejecutar'
+                document.getElementById("p-action").classList.remove('hidden')
+                action.focus();
+            }
+        }
+    
+    })
 });

@@ -12,17 +12,17 @@ class fulfillmentsEntity extends Models
     function __construct(string $idTienda)
     {
         parent::__construct();
-        $this -> id_tienda = $idTienda;
+        $this->id_tienda = $idTienda;
     }
 
     function getAllFulfillments($orderId)
     {
 
-        $this->prepareAPIGet($this->id_tienda , 'orders/' . $orderId  . '/fulfillments');
+        $this->prepareAPIGet($this->id_tienda, 'orders/' . $orderId  . '/fulfillments');
 
-        $fulfillmentsData = $this-> executeAPI();
+        $fulfillmentsData = $this->executeAPI();
 
-        $this-> deleteAPI();
+        $this->deleteAPI();
 
         if (isset($fulfillmentsData['code']) && $fulfillmentsData['code'] === 404 && $fulfillmentsData['description'] == null) {
             return ['error' => 404];
@@ -70,25 +70,21 @@ class fulfillmentsEntity extends Models
     //     }
     // }
 
-    // function deletefulfillments()
-    // {
-    //     header('Content-Type: application/json');
+    function deletefulfillments($orderId , $fulfillmentsId)
+    {
+        header('Content-Type: application/json');
 
-    //     if ($this->existPOST(['order_id', 'fulfillments_id'])) {
-    //         $orderId = $this->getPost('order_id');
-    //         $fulfillmentsId = $this->getPost('fulfillments_id');
+        $urlFulfill = 'orders/' . $orderId . '/fulfillments/' . $fulfillmentsId;
 
-    //         $urlFulfill = 'orders/' . $orderId . '/fulfillments/' . $fulfillmentsId;
+        $this->prepareAPIDelete($this->id_tienda, $urlFulfill);
 
-    //         $this->prepareAPIDelete(9, $urlFulfill);
+        $fulfillmentData = $this->executeAPI();
 
-    //         $fulfillmentData = $this->executeAPI();
+        $res = ['status' => 201, 'data' => $fulfillmentData];
 
-    //         $res = ['status' => 201, 'data' => $fulfillmentData];
+        return $res;
+        
+    }
 
-
-    //         echo json_encode($res);
-    //         return;
-    //     }
-    // }
+    //TODO: generar las create en masa
 }

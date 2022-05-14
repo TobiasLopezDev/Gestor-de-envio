@@ -105,6 +105,16 @@ $router -> get('/orders', function(){
     $controller -> index($user);
 });
 
+$router -> post('/orders/createShippings', function(){
+    
+    $user = unserialize($_SESSION['user']);
+    
+    $controller = new orders($user);
+
+    $controller -> createShippings($_POST);
+    
+});
+
 $router->before('GET', '/single/{orderId}', function() { 
     global $user;
     if(!$user){
@@ -117,6 +127,14 @@ $router -> get('/single/{orderId}', function($orderId){
     $controller = new single($user);
 
     $controller -> index($orderId);
+
+});
+
+$router -> post('/single/deletefulfillments', function(){
+    global $user;
+    $controller = new single($user);
+
+    $controller -> deleteFulfill($_POST);
 
 });
 

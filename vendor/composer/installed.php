@@ -1,11 +1,11 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
+        'reference' => '678ec3012dbd476c36138302b98d4566612fc442',
         'name' => 'tobias/gestor-envios',
         'dev' => true,
     ),
@@ -37,6 +37,15 @@
             'reference' => 'eab7a0df01fe2344d172bff4cd6dbd3f8b84ad15',
             'dev_requirement' => false,
         ),
+        'shuchkin/simplexlsxgen' => array(
+            'pretty_version' => '1.2.10',
+            'version' => '1.2.10.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../shuchkin/simplexlsxgen',
+            'aliases' => array(),
+            'reference' => '402c6b9417eb5e4b14268583341aa3e32b130ce3',
+            'dev_requirement' => false,
+        ),
         'symfony/polyfill-ctype' => array(
             'pretty_version' => 'v1.25.0',
             'version' => '1.25.0.0',
@@ -65,12 +74,12 @@
             'dev_requirement' => false,
         ),
         'tobias/gestor-envios' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => NULL,
+            'reference' => '678ec3012dbd476c36138302b98d4566612fc442',
             'dev_requirement' => false,
         ),
         'vlucas/phpdotenv' => array(

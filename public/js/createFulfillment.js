@@ -8,7 +8,7 @@ var formCreateFulfillment = document.getElementById("form-create-fulfillment");
 
 var cancelCreateFulfillments = document.getElementById("cancelCreateFulfillments");
 
-var modalEliminate = document.getElementById("");
+// var modalEliminate = document.getElementById("");
 
 
 createFulfill.addEventListener('click', function () {
