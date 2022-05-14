@@ -5,20 +5,6 @@ let modalExcel = document.getElementById("modalExcelGen");
 let createExcelBtn = document.getElementById("createExcel-btn-modal");
 let cancelExcelBtn = document.getElementById("cancelExcel-btn-modal");
 
-async function asynGET(url) {
-    const call = await fetch(url)
-
-
-
-        .then(response => {
-            // console.log("STATUS ES:" + response.status)
-            // console.log("data ES:" + response.data)
-            // console.log(response)
-            return true;
-        });
-
-}
-
 for (var i = 0; i < arrows.length; i++) {
     arrows[i].addEventListener('click', hiddenShowElement, false);
 }
@@ -39,7 +25,7 @@ var action = document.getElementById("actionSelect");
 
 
 
-createExcelBtn.addEventListener('click', function () {
+createExcelBtn.addEventListener('click', async function () {
 
     ordersAction = modalExcel.dataset.orders;
     checkboxOptions = document.querySelectorAll('.checkboxExcel');
@@ -58,7 +44,15 @@ createExcelBtn.addEventListener('click', function () {
     params.append('orders', ordersAction);
     params.append('filters', options);
 
-    asyncCreateCExcel('http://localhost/gestor-final/orders/genXLSX', params);
+    let request = await asyncCreateCExcel('http://localhost/gestor-final/orders/genXLSX', params);
+
+
+    if (request.status == 200) {
+        console.log("hecho");
+
+        console.log(request.url);
+        window.open('http://localhost/gestor-final/download/'+ request.url, '_blank');
+    }
 
 });
 
@@ -178,23 +172,23 @@ $(document).ready(function () {
         } else {
             document.getElementById("p-action").classList.add('hidden')
             // console.log(action.value);
-    
+
             var checkboxes = document.querySelectorAll('.checkboxDataTableShipped');
-    
+
             checkedItems = [];
-    
+
             for (const item of checkboxes) {
                 if (item.checked) {
-    
+
                     const itemPadre = item.parentNode;
                     checkedItems.push(itemPadre.dataset.orderId);
                 }
             }
-    
+
             if (checkedItems != '') {
                 console.log(checkedItems);
                 console.log(action.value);
-    
+
                 switch (action.value) {
                     case "1":
                         console.log("case 1")
@@ -202,21 +196,21 @@ $(document).ready(function () {
                         modalExcel.dataset.orders = checkedItems;
                         modalExcel.scrollIntoView();
                         break;
-                
+
                     case "2":
                         console.log("case 2")
                         modalPdf.style.display = "flex";
                         modalPdf.dataset.orders = checkedItems;
                         modalPdf.scrollIntoView();
                         break;
-                        
+
                     case "3":
                         console.log("case 3")
                         modalFulfillments.dataset.orders = checkedItems;
                         modalFulfillments.style.display = "flex";
                         modalFulfillments.scrollIntoView();
                         break;
-    
+
                     default:
                         break;
                 }
@@ -227,6 +221,6 @@ $(document).ready(function () {
                 action.focus();
             }
         }
-    
+
     })
 });

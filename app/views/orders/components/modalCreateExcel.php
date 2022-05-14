@@ -39,7 +39,7 @@ class modalCreateExcel{
                         <li class="my-2"><input class="mx-4 checkboxExcel" type="checkbox" name="custom_Zone"
                                 id="custom_Zone" checked><label for="custom_Zone">Zona
                                 custom</label></li>
-                        <li class="my-2"><input class="mx-4 checkboxExcel" type="checkbox" name="k" id="customer_info"
+                        <li class="my-2"><input class="mx-4 checkboxExcel" type="checkbox" name="customer_info" id="customer_info"
                                 checked><label for="customer_info">Informacion del usuario</label></li>
                     </ul>
                 </div>

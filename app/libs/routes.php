@@ -125,6 +125,25 @@ $router -> post('/orders/createFulfillments', function(){
     
 });
 
+$router -> post('/orders/genXLSX', function(){
+    
+    $user = unserialize($_SESSION['user']);
+    
+    $controller = new orders($user);
+
+    $controller -> createXLSX($_POST);
+    
+});
+$router -> post('/orders/genPDF', function(){
+    
+    $user = unserialize($_SESSION['user']);
+    
+    $controller = new orders($user);
+
+    $controller -> createPDF($_POST);
+    
+});
+
 $router->before('GET', '/single/{orderId}', function() { 
     global $user;
     if(!$user){
@@ -177,6 +196,16 @@ $router -> post('/settings/createZone', function (){
     global $user;
     $controller = new settings($user);
     $controller -> createZone();
+});
+
+$router -> get('/download/{filename}', function($filename){
+    global $user;
+
+    $controller = new orders($user);
+    $file = 'C:\xampp\htdocs\gestor-final\app\entity/../temp/xlsx/'.$filename;
+
+    $controller -> downloadXLSX($file , $filename);
+
 });
 
 

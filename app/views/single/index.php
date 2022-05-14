@@ -7,6 +7,7 @@ use app\views\components\menu;
 use app\views\single\components\createFulfillments;
 use app\views\single\components\fulfillments;
 use app\views\single\components\modalDeleteFulfillments;
+use app\views\single\components\createShipping;
 
 new headerTemplate('Single');
 new menu();
@@ -92,6 +93,13 @@ $order = $this-> data['order'];
                                 Imprimir Ticket
 
                             </button>
+                            <button
+                                id='descargarXLSX'
+                                data-order-id='<?php echo $order['id'] ?>'
+                                class="block-flex items-center justify-center px-3 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
+                                Crear XLSX
+
+                            </button>
 
                             <?php endif;?>
 
@@ -99,7 +107,7 @@ $order = $this-> data['order'];
                     </div>
 
                     <!-- Create Shipping -->
-                    <?php if ($order['shipping_status'] === 'unshipped'){require_once 'components/createShipping.php' ;}?>
+                    <?php if ($order['shipping_status'] === 'unshipped'){new createShipping();}?>
 
 
                     <!-- FIXME: AL RELOAD GENERA UN SHIPPING TRACKED NUMBER -->
@@ -119,8 +127,8 @@ $order = $this-> data['order'];
 
         </div>
     </div>
-
-
+<pre>
+<?php var_dump($order)?>
 
 </main>
 

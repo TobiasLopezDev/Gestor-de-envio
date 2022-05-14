@@ -34,19 +34,29 @@ class orders extends Controllers
 
     public function createXLSX()
     {
-        if ($this->existPOST(['ordersId', 'filters'])) {
-            $ordersId = $this->getPost('OrdersId');
-            $filters = $this->getPost('filters');
+        if ($this->existPOST(['orders', 'filters'])) {
+            $ordersId = explode(',', $this->getPost('orders'));
+            $filters = explode(',', $this->getPost('filters'));
 
-            if ($ordersId == '' || empty($ordersId) || $filters == '' || empty($filters)) {
-                $orders = new ordersModel();
-                $orders->idTienda = $this->user->getTienda();
-                $allOrders = $orders->getAllOrders();
-
-                for ($i = 0; $i < sizeof($ordersId); $i++) {
-                }
+            if ($ordersId != '' || !empty($ordersId) || $filters != '' || !empty($filters)) {
+                error_log('orders::createXLSX');
+                $orders = new ordersEntity($this->user->getTienda());
+                $xlsx = $orders->genXLSX($ordersId, $filters);
+                echo json_encode(['status' => 200, 'url' => $xlsx]);
+                return;
             }
         }
+    }
+
+    public function downloadXLSX($zipName, $filename)
+    {
+        header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+        header("Content-Disposition: attachment; filename=$filename");
+        header("Content-Length: " . filesize($zipName));
+
+        readfile($zipName);
+        unlink($zipName);
+        exit;
     }
 
     public function createPDF()
@@ -58,6 +68,7 @@ class orders extends Controllers
             }
         }
     }
+
     public function createFulfillments()
     {
         header('Content-Type: application/json');
@@ -67,7 +78,7 @@ class orders extends Controllers
             $ordersId = explode(',', $ordersId);
 
             if ($ordersId != '' || !empty($ordersId)) {
-                $data ='{
+                $data = '{
                         "status": "' . $this->getPost('inputStatus') . '",
                         "description": "' . $this->getPost('inputDescription') . '",
                         "city": "' . $this->getPost('inputCity') . '",
@@ -78,12 +89,12 @@ class orders extends Controllers
                     }';
                 $fullfillments = new fulfillmentsEntity($this->user->getTienda());
 
-                $response = $fullfillments -> postFulfillments($ordersId , $data);
+                $response = $fullfillments->postFulfillments($ordersId, $data);
 
                 echo json_encode($response);
                 return;
             } else {
-                echo json_encode(['code' => 404 , 'msg' => 'falta las ordenes']);
+                echo json_encode(['code' => 404, 'msg' => 'falta las ordenes']);
                 return;
             }
         }
@@ -115,7 +126,4 @@ class orders extends Controllers
             return;
         }
     }
-
-    //TODO: generar las create en masa
-
 }

@@ -102,42 +102,75 @@ class ordersEntity extends Models
         $data = [];
 
         for ($i = 0; $i < sizeof($orders); $i++) {
-
+            $encabezado = [];
             $itemArray = [];
-            
+            $order = $this-> getOrderById($orders[$i]);
             foreach ($filters as $filterValue) {
                 switch ($filterValue) {
                     case 'number':
-                        array_push($itemArray, $orders[$i]['number']);
+                        if ($i == 0){
+                            array_push($encabezado, '#Orden');
+                        }
+                        array_push($itemArray, $order['number']);
                         break;
 
                     case 'products':
-                        array_push($itemArray, $orders[$i]['id']);
+                        if ($i == 0){
+                            array_push($encabezado, 'Cantidad de productos');
+                        }
+                        array_push($itemArray, sizeof($order['products']));
                         break;
 
                     case 'shipping_Info':
 
-
-                        array_push($itemArray, $orders[$i]['shipping_tracking_number']);
+                        if ($i == 0){
+                            array_push($encabezado, '<b><center>Direccion</center></b>'); 
+                            array_push($encabezado, '<b><center>Localidad</center></b>');
+                            array_push($encabezado, '<b><center>Ciudad</center></b>');
+                            array_push($encabezado, '<b><center>Provincia</center></b>');
+                            array_push($encabezado, '<b><center>Pais</center></b>');
+                            array_push($encabezado, '<b><center>CEP // ZIPCODE</center></b>');
+                            array_push($encabezado, '<b><center>Notas del cliente</center></b>');
+                        }
+                        array_push($itemArray, $order['shipping_address']["address"]." ".$order["shipping_address"]["number"] . " " .$order['shipping_address']["floor"]); 
+                        array_push($itemArray, $order['shipping_address']["locality"]);
+                        array_push($itemArray, $order['shipping_address']["city"]);
+                        array_push($itemArray, $order['shipping_address']["province"]);
+                        array_push($itemArray, $order['shipping_address']["country"]);
+                        array_push($itemArray, $order['shipping_address']["zipcode"]);
+                        array_push($itemArray, $order["note"]);
+                        
                         break;
 
                     case 'custom_Zone':
-                        array_push($itemArray, $orders[$i]['shipping_address']['locality']);
-                        array_push($itemArray, $orders[$i]['shipping_address']['floor']);
+                        if ($i == 0){
+                            array_push($encabezado, '<b><center>Custom Zone</center></b>');
+                        } 
+                            array_push($itemArray, $order['custom_zone']);
                         break;
 
                     case 'customer_info':
-                        array_push($itemArray, $orders[$i]['customer']);
-                        break;
+                        if ($i == 0){
+                            array_push($encabezado, '<b><center><center>Nombre del cliente</center></b>');
+                            array_push($encabezado, '<b><center>Celular</center></b>');
+                        } 
+                        array_push($itemArray, $order['shipping_address']["name"]);
+                        array_push($itemArray, $order['shipping_address']["phone"]);
+                    break;
                 }
             }
-
+            if($i == 0){
+                array_push($data, $encabezado);
+            }
             array_push($data, $itemArray);
         }
-
+        $filename = date('d-m-y') . '-exportOrders.xlsx';
+        $rutaXLSX = dirname(__FILE__) . '/../temp/xlsx/'. $filename;
         $xlsx = new SimpleXLSXGen();
         $xlsx->addSheet($data, 'Ordenes Exportadas');
-        $xlsx->saveAs(date('d-m-y') . '-exportOrders.xlsx');
+        $xlsx->saveAs($rutaXLSX);
+
+        return $filename;
     }
 
     public function createShipping($data = []){

@@ -219,16 +219,16 @@ new menu();
                                         </select>
                                         <button id="actionButton"
                                             class="inline w-2/5 px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
-                                            Select Actions
+                                            Acciones para ordenes seleccionadas
                                         </button>
                                     </div>
                                 </div>
 
                                 <div class="w-2/5 inline px-6 py-2.5">
                                     <div class="relative flex w-full h-full">
-                                        <button id="selectAllBtn" data-select-all="false"
+                                        <button id="selectAllBtn" data-select-all="true"
                                             class="selectAll inline  w-2/5 px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out">
-                                            Select all
+                                            Seleccionar Todos
                                         </button>
                                     </div>
                                 </div>
