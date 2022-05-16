@@ -45,10 +45,15 @@ class fulfillmentsEntity extends Models
             $this->prepareAPIPost($this->id_tienda, $urlFulfill, $data);
 
             $fulfillmentData = $this->executeAPI();
+            $this -> deleteAPI();
             if(isset($fulfillmentData['code'])){
                  array_push($errores , ['code' => 404 , 'order' => $value , 'data' => $fulfillmentData]) ;
             }else{
-                array_push($success , ['code' => 200 , 'order' => $value , 'data' => $fulfillmentData]) ;
+                $urlOrder = 'orders/'.$value;
+                $this->prepareAPIGet($this->id_tienda, $urlOrder);
+                $order = $this -> executeAPI();
+                $this -> deleteAPI();
+                array_push($success , ['code' => 200 , 'order' => $value , 'numberOrder' => $order["number"], 'data' => $fulfillmentData]) ;
             }
             
         }

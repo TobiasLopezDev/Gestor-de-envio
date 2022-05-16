@@ -5,27 +5,44 @@ let createFulfillmentsBtn = document.getElementById("createFulfillments-btn-moda
 let cancelFulfillmentsBtn = document.getElementById("cancelFulfillments-btn-modal");
 let formCreateFulfillment = document.getElementById("form-create-fulfillment");
 
+let modalBodyFulfillments = document.getElementById("modalBodyFulfillments");
+let titleFulfillments = document.getElementById("titleFulfillments");
+let containerFulfillemnts = document.getElementById("containerFulfillemnts");
+let loaderFulfillments = document.getElementById("loaderFulfillments");
+let botoneraFulfillments = document.getElementById("botoneraFulfillments");
+
 cancelFulfillmentsBtn.addEventListener('click' ,function (e){
     e.preventDefault();
     modalFulfillments.style.display = "none";
 });
 
-createFulfillmentsBtn.addEventListener('click', function (event) {
+createFulfillmentsBtn.addEventListener('click', async function (event) {
     event.preventDefault();
     ordersAction = modalFulfillments.dataset.orders;
 
     params = new FormData(formCreateFulfillment);
     params.append('ordersId', ordersAction);
 
-    for (var value of params.values()) {
-        console.log(value);
-     }
-
      if (valideteFormFulfillments(params)) {
-         console.log('mandando solicitud')
-        let response = asyncCreateFulfillments('http://localhost/gestor-final/orders/createFulfillments', params);
-        if(response.status == 201){
-        //   todo ok
+        containerFulfillemnts.classList.add("hidden");
+        botoneraFulfillments.classList.add("hidden");
+        loaderFulfillments.classList.remove("hidden");
+
+        let response = await asyncCreateFulfillments('http://localhost/gestor-final/orders/createFulfillments', params);
+
+        if(response.code == 201){
+            titleFulfillments.innerHTML="Estado de envio creados";
+            containerFulfillemnts.innerHTML = "";
+            response.success.forEach(order => {
+                var divResponse = document.createElement("div");
+                divResponse.innerHTML = '<p>Order #'+order.numberOrder+' actualizada con exito.</p>'
+                containerFulfillemnts.appendChild(divResponse); 
+            });
+            createFulfillmentsBtn.classList.add("hidden");
+            loaderFulfillments.classList.add("hidden");
+
+            botoneraFulfillments.classList.remove("hidden");
+            containerFulfillemnts.classList.remove("hidden");
         }
         else{
         //   todo mal

@@ -14,7 +14,7 @@ class modalCreateFulfillments{
                 <circle class="loader-path" cx="50" cy="50" r="20" fill="none" stroke="#000000" stroke-width="2" />
             </svg>
         </div>
-        <div class="mt-3 text-center" id="modalBody">
+        <div class="mt-3 text-center" id="modalBodyFulfillments">
             <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
 
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24"
@@ -23,8 +23,8 @@ class modalCreateFulfillments{
                         d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
                 </svg>
             </div>
-            <h3 class="text-lg font-medium text-gray-900">¿Deseas crear un estado de envio <br> para estas ordenes?</h3>
-            <div class="mt-2 text-center">
+            <h3 class="text-lg font-medium text-gray-900" id="titleFulfillments">¿Deseas crear un estado de envio <br> para estas ordenes?</h3>
+            <div class="mt-2 text-center" id="containerFulfillemnts">
                 <form id="form-create-fulfillment" method="post">
 
                     <div class="form-group mb-6">
@@ -95,7 +95,13 @@ class modalCreateFulfillments{
                         </div>
                     </div>
             </div>
-            <div class="items-center px-4 py-3 flex items-center justify-center">
+            <div id="loaderFulfillments" style="width:100px" class="h-auto flex m-auto hidden">
+                    <svg class="circular-loader"  style = "position:unset;" viewBox="25 25 50 50">
+                        <circle class="loader-path" cx="50" cy="50" r="20" fill="none" stroke="#000000"
+                            stroke-width="2" />
+                    </svg>
+                </div>
+            <div class="items-center px-4 py-3 flex items-center justify-center" id="botoneraFulfillments">
                 <button id="createFulfillments-btn-modal"
                     class="px-4 py-2 mr-4 bg-green-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300">
                     Crear
