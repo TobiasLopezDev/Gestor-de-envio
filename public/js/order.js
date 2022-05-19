@@ -48,9 +48,9 @@ createExcelBtn.addEventListener('click', async function () {
 
 
     if (request.status == 200) {
-        console.log("hecho");
+        //console.log("hecho");
 
-        console.log(request.url);
+        //console.log(request.url);
         window.open('http://localhost/gestor-final/download/'+ request.url, '_blank');
     }
 
@@ -78,7 +78,7 @@ $(document).ready(function () {
 
     $('#tableBodyOrdersEnvios tfoot .searchable').each(function () {
         var title = $(this).html();
-        // console.log(title);
+        // //console.log(title);
         $(this).html('<input type="text" placeholder="Buscar ' + title +
             '"  style="margin:auto !important;" class="form-control block w-2/3 m-auto px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none disabled:opacity-75 disabled:bg-gray-100"/>'
         );
@@ -171,7 +171,7 @@ $(document).ready(function () {
             action.focus();
         } else {
             document.getElementById("p-action").classList.add('hidden')
-            // console.log(action.value);
+            // //console.log(action.value);
 
             var checkboxes = document.querySelectorAll('.checkboxDataTableShipped');
 
@@ -186,26 +186,26 @@ $(document).ready(function () {
             }
 
             if (checkedItems != '') {
-                console.log(checkedItems);
-                console.log(action.value);
+                //console.log(checkedItems);
+                //console.log(action.value);
 
                 switch (action.value) {
                     case "1":
-                        console.log("case 1")
+                        //console.log("case 1")
                         modalExcel.style.display = "flex";
                         modalExcel.dataset.orders = checkedItems;
                         modalExcel.scrollIntoView();
                         break;
 
                     case "2":
-                        console.log("case 2")
+                        //console.log("case 2")
                         modalPdf.style.display = "flex";
                         modalPdf.dataset.orders = checkedItems;
                         modalPdf.scrollIntoView();
                         break;
 
                     case "3":
-                        console.log("case 3")
+                        //console.log("case 3")
                         modalFulfillments.dataset.orders = checkedItems;
                         modalFulfillments.style.display = "flex";
                         modalFulfillments.scrollIntoView();

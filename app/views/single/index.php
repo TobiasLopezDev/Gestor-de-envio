@@ -3,6 +3,7 @@ use app\views\headerTemplate;
 use app\views\footerTemplate;
 use app\views\components\menu;
 
+use app\views\single\components\modalCreateExcel;
 
 use app\views\single\components\createFulfillments;
 use app\views\single\components\fulfillments;
@@ -90,7 +91,7 @@ $order = $this-> data['order'];
                                 id='imprimirTicket'
                                 data-order-id='<?php echo $order['id'] ?>'
                                 class="block-flex items-center justify-center px-3 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
-                                Imprimir Ticket
+                                Imprimir PDF
 
                             </button>
                             <button
@@ -101,6 +102,8 @@ $order = $this-> data['order'];
 
                             </button>
 
+                            
+                            <!-- <script src="<?php echo $_ENV['URL']?>public/js/BtnSingleCreatePdf.js"></script> -->
                             <?php endif;?>
 
                         </div>
@@ -133,6 +136,7 @@ $order = $this-> data['order'];
 </main>
 
 <?php new modalDeleteFulfillments(); ?>
+<?php new modalCreateExcel(); ?>
 
 
 <?php  new footerTemplate(); ?>

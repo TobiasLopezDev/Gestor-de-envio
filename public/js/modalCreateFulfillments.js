@@ -49,7 +49,7 @@ createFulfillmentsBtn.addEventListener('click', async function (event) {
         }
      }
      else {
-         console.log("invalido")
+         //console.log("invalido")
 
      }
 
@@ -91,7 +91,7 @@ function valideteFormFulfillments(formData) {
         return false
     }
     else {
-        console.log(inputNoValidate)
+        //console.log(inputNoValidate)
         return true;
     }
 

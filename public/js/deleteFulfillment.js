@@ -12,7 +12,7 @@ deleteBtn.onclick = async function () {
     params.append('order_id', modal.dataset.orderId);
     params.append('fulfillments_id', modal.dataset.fulfillmentId); 
 
-    console.log(params.values())
+    //console.log(params.values())
 
     loader.style.display = 'block'
     modalBody.style.display = 'none'
@@ -22,7 +22,7 @@ deleteBtn.onclick = async function () {
     loader.style.display = 'none'
 
     if(request.status == 201){
-        console.log("hecho");
+        //console.log("hecho");
 
         var elem = document.getElementById(modal.dataset.fulfillmentId);
         elem.parentNode.removeChild(elem);;

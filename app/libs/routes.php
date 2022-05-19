@@ -198,6 +198,12 @@ $router -> post('/settings/createZone', function (){
     $controller -> createZone();
 });
 
+$router -> post('/settings/deleteZone', function (){
+    global $user;
+    $controller = new settings($user);
+    $controller -> deleteZone($_POST);
+});
+
 $router -> get('/download/{filename}', function($filename){
     global $user;
 

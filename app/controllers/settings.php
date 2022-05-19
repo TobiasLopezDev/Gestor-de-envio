@@ -61,4 +61,32 @@ class settings extends Controllers
             return;
         }
     }
+
+    public function deleteZone()
+    {
+
+        if ($this->existPOST(['idZone'])) {
+            error_log( $this->getPost('idZone'));
+            $customZones = new customZonesEntity();
+            $customZones->id_tienda = $this->user->getTienda();
+
+            $idZone = $this->getPost('idZone');
+
+            if ( $idZone ==  "" && empty( $idZone)) {
+                $res = ['status' => 404, 'data' => 'No hay datos para eliminar'];
+            } 
+            else {
+                $customZones->deleteId = $idZone;
+                if ($customZones->deleteZone()) {
+                    $res = ['status' => 201, 'data' => 'Zona eliminada'];
+                }
+                else{
+                    $res = ['status' => 404, 'data' => 'Error al eliminar , intente de nuevo'];
+                }
+            }
+
+            echo json_encode($res);
+            return;
+        }
+    }
 }

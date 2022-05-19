@@ -12,7 +12,7 @@ var cancelCreateFulfillments = document.getElementById("cancelCreateFulfillments
 
 
 createFulfill.addEventListener('click', function () {
-    console.log(createFulfill.dataset.orderId);
+    //console.log(createFulfill.dataset.orderId);
 
     botonera.classList.add("hidden");
 
@@ -38,8 +38,8 @@ formCreateFulfillment.addEventListener('submit', async function (e) {
     e.preventDefault();
 
     let params = new FormData(formCreateFulfillment);
-    console.log("validando...")
-    console.log(params.values())
+    //console.log("validando...")
+    //console.log(params.values())
 
     if (valideteFormFulfillments(params)) {
        let response = await asynPOST('http://localhost/gestor-final/single/postFulfillments', params);
@@ -51,7 +51,7 @@ formCreateFulfillment.addEventListener('submit', async function (e) {
        }
     }
     else {
-        console.log("invalido")
+        //console.log("invalido")
     }
 
 })
@@ -72,7 +72,7 @@ window.onload = function () {
     const titleFulfillments = document.querySelectorAll('.timeline-title span');
 
     [].forEach.call(titleFulfillments, function (title) {
-        console.log(title.innerHTML)
+        //console.log(title.innerHTML)
 
         switch (title.innerHTML) {
             case 'dispatched':
@@ -137,17 +137,17 @@ window.onload = function () {
 //                 inputNoValidate.push(key)
 //                 document.getElementById(key).setAttribute("aria-invalid", "true");
 //                 document.getElementById(key).classList.add("border-red-700");
-//                 console.log(key + "add class" )
+//                 //console.log(key + "add class" )
 //             }
 //         }
 //     }
 
 //     if (inputNoValidate.length > 0) {
-//         console.log(inputNoValidate)
+//         //console.log(inputNoValidate)
 //         return false
 //     }
 //     else {
-//         console.log(inputNoValidate)
+//         //console.log(inputNoValidate)
 //         return true;
 //     }
 

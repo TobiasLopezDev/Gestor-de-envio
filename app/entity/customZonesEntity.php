@@ -153,6 +153,22 @@ class customZonesEntity extends Models {
         
 
     }
+
+    function deleteZone(){
+        try{
+            $query = $this -> prepare('DELETE FROM settings WHERE id = :setting_id AND id_tienda = :id_tienda ');
+            $query -> execute([
+                'setting_id'  => $this -> deleteId,
+                'id_tienda'   => $this -> id_tienda
+            ]);
+
+            return true;
+        }
+        catch (PDOException $e){
+            error_log('customZonesEntity::deleteZone -> PDOEXCEPTION : '. $e );
+            return false;
+        }
+    }
     
     
 }

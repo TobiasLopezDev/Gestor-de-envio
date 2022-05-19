@@ -45,8 +45,8 @@ document.getElementById("tracking_number").addEventListener('submit',function (e
     let params = new FormData(  document.getElementById('tracking_number') );
     
 
-    console.log(document.getElementById('checkTracking').getAttribute('value'));
-    console.log(document.getElementById('checkNotification').getAttribute('value'));
+    //console.log(document.getElementById('checkTracking').getAttribute('value'));
+    //console.log(document.getElementById('checkNotification').getAttribute('value'));
 
     asynPOST('http://localhost/gestor-final/single/createshipping' , params );
 
@@ -67,8 +67,8 @@ async function asynPOST(url , params){
     })
     .then(response => response.json())
     .then(response => {
-        console.log("STATUS ES:" + response.status)
-        console.log("data ES:" + response.data.id)
+        //console.log("STATUS ES:" + response.status)
+        //console.log("data ES:" + response.data.id)
         return true;
     });
 
