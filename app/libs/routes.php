@@ -7,7 +7,7 @@ use app\controllers\orders;
 use app\controllers\single;
 
 use app\controllers\settings;
-
+use app\entity\ordersEntity;
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__.'/../config');
 $dotenv->load();
@@ -206,6 +206,13 @@ $router -> get('/download/{filename}', function($filename){
 
     $controller -> downloadXLSX($file , $filename);
 
+});
+
+$router -> get('/pdf' , function (){
+    $test = new ordersEntity(9);
+    $pdfs = $test -> genPDF([561938161,556922930]);
+
+    var_dump($pdfs);
 });
 
 

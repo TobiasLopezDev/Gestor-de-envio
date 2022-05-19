@@ -10,6 +10,8 @@
     "require": {
         "bramus/router": "^1.6",
         "vlucas/phpdotenv": "^5.4",
-        "shuchkin/simplexlsxgen": "^1.2"
+        "shuchkin/simplexlsxgen": "^1.2",
+        "dompdf/dompdf": "^1.2",
+        "mpdf/mpdf": "^8.1"
     }
 }

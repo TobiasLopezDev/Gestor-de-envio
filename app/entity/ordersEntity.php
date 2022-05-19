@@ -4,9 +4,12 @@ namespace app\entity;
 
 use PDO;
 use PDOException;
+use ZipArchive;
 use app\libs\Models;
 use app\entity\customZonesEntity;
+use app\views\templates\pdfTemplate;
 use Shuchkin\SimpleXLSXGen;
+
 
 class ordersEntity extends Models
 {
@@ -231,6 +234,80 @@ class ordersEntity extends Models
     private function generate_UUID($prefix){
         return uniqid($prefix);
     }
+
+    public function genPDF($orders){
+        $pdfs = [];
+
+        for ($i = 0; $i < sizeof($orders); $i++) {
+            
+            $order = $this-> getOrderById($orders[$i]);
+
+            $pdf = new \Mpdf\Mpdf([
+                'mode' => 'utf-8',
+                'orientation' => 'L',
+                'default_font' => 'Ayar'
+            ]);
+
+            ob_start();
+
+            require dirname(__FILE__)."/../views/templates/css/styleTemplate.css";
+
+            $css = ob_get_clean();
+
+            ob_start();
+
+            require dirname(__FILE__)."/../views/templates/pdfTemplate.php";
+
+            $template = ob_get_clean();
+
+            $pdf -> WriteHTML( $css , \Mpdf\HTMLParserMode::HEADER_CSS);
+            $pdf -> WriteHTML( $template , \Mpdf\HTMLParserMode::HTML_BODY);
+
+            $dirTemp = dirname(__FILE__) . '/../temp/pdf/';
+
+            $pdf -> Output($dirTemp . 'Order-'.$order["number"].'.pdf' , 'F');
+
+            array_push($pdfs , 'Order-'.$order["number"].'.pdf');
+        }
+
+        $this->createZIP($pdfs);
+    }
+
+    private function createZIP($pdfs){
+        
+        $dirTemp = dirname(__FILE__) . '/../temp/pdf/';
+        $zipName = $dirTemp .'OrdersPDFs-'.date('j-n-y').'.zip';
+
+        $zip = new ZipArchive;
+
+        if ($zip->open($zipName , ZipArchive::CREATE) === TRUE) {
+            
+            foreach($pdfs as $pdf){
+                $zip -> addFile($dirTemp . $pdf , $pdf );
+            }
+            $zip->close();
+        }
+
+        foreach($pdfs as $file){
+            if(is_file($dirTemp.$file))
+            unlink($dirTemp.$file);
+        }
+
+        $file_name = basename($zipName);
+
+        $this -> downloadPdfs($zipName,$file_name);
+    }
+
+    private function downloadPDFS($zipName , $file_name){
+        header("Content-Type: application/zip");
+        header("Content-Disposition: attachment; filename=$file_name");
+        header("Content-Length: " . filesize($zipName));
+        readfile($zipName);
+        unlink($zipName);
+        exit;
+    }
+
+    
 
 
 }
