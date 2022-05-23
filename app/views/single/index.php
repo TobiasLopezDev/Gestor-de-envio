@@ -11,7 +11,7 @@ use app\views\single\components\fulfillments;
 use app\views\single\components\modalDeleteFulfillments;
 use app\views\single\components\createShipping;
 
-new headerTemplate('Single');
+new headerTemplate('Order #'.$this-> data['order']['number']);
 new menu();
 
 $order = $this-> data['order'];

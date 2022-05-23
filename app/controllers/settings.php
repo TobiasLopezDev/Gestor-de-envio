@@ -89,4 +89,8 @@ class settings extends Controllers
             return;
         }
     }
+
+    public function userIndex(){
+        $this->render('settings/user', ['customZones' => $this->customZones]);
+    }
 }

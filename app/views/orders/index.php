@@ -12,7 +12,7 @@ use app\views\orders\components\tables\tableAllOrders;
 use app\views\orders\components\tables\tableShipped;
 use app\views\orders\components\tables\tableUnshipped;
 
-new headerTemplate('Dashboard');
+new headerTemplate('Orders');
 new menu();
 ?>
 

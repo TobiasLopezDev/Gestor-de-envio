@@ -2,7 +2,7 @@
 use app\views\headerTemplate;
 use app\views\footerTemplate;
 
-new headerTemplate('Sign Up');
+new headerTemplate('Login');
 ?>
 
 <body class="bg-gray-300">
@@ -10,7 +10,7 @@ new headerTemplate('Sign Up');
     <section class="h-screen">
         <div class="h-screen">
             <div class="flex flex-row justify-center items-center h-full">
-                <div class="w-1/4 h-auto bg-gray-900 rounded-lg">
+                <div class="w-full md:w-1/2 lg:w-1/4 p-4 h-auto bg-gray-900 rounded-lg">
 
                     <div class="items-center text-center">
                         <h1 class="text-white font-sans text-7xl leading-loose">Login</h1>
@@ -22,19 +22,17 @@ new headerTemplate('Sign Up');
                     </div>
 
                     <div class="flex justify-center items-center">
-                        <div class="w-1/2">
+                        <div class="w-full lg:w-1/2">
                             <form action="<?php echo $_ENV['URL']?>login" method="POST">
                                 <div class="w-full mb-4">
                                     <input type="email" name="email" placeholder="EMAIL"
                                         class="text-white w-full bg-transparent border border-white rounded-lg px-2 py-3" />
-                                    <label for="">Email</label>
                                 </div>
 
 
                                 <div class="w-full mb-4">
                                     <input type="password" name="password" placeholder="Password"
                                         class="text-white w-full bg-transparent border border-white rounded-lg px-2 py-3" />
-                                    <label for="">Email</label>
                                 </div>
 
                                 <div class="w-full mb-4">

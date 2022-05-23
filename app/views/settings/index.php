@@ -3,7 +3,7 @@ use app\views\headerTemplate;
 use app\views\footerTemplate;
 use app\views\components\menu;
 
-new headerTemplate('Sign Up');
+new headerTemplate('Settings');
 new menu();
 
 $customZones = $this -> data['customZones'] ;

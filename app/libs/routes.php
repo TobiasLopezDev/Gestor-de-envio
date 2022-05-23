@@ -183,6 +183,15 @@ $router -> get('/settings', function(){
 
 });
 
+$router -> get('/settings/user', function(){
+    global $user;
+
+    $controller = new settings($user);
+
+    $controller -> userIndex();
+
+});
+
 $router -> get('/settings/getallzone', function (){
     header("HTTP/1.1 200 OK");
     header('Content-Type: application/json; charset=utf-8');
