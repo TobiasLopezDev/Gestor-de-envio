@@ -14,7 +14,7 @@ new menu();
 <script src="<?php echo $_ENV['URL']?>public/js/dashboard.js"></script>
 <main class=" min-h-screen h-auto w-full bg-gray-200 flex flex-wrap">
 
-    <div class="h-auto w-1/2 p-8">
+    <div class="h-auto md:w-full lg:w-1/2 p-8">
 
         <div class="h-auto bg-gray-50 drop-shadow-lg rounded-lg ">
             <div class="bg-gray-900 w-full shadow-lg rounded-t-lg overflow-hidden p-4 text-white text-center">
@@ -67,7 +67,7 @@ new menu();
 
     </div>
 
-    <div class="h-auto w-1/2 p-8  flex flex-col flex-wrap justify-center">
+    <div class="h-auto md:w-full lg:w-1/2 p-8  flex flex-col flex-wrap justify-center">
 
         <div class="h-auto bg-gray-50 drop-shadow-lg rounded-lg ">
 
