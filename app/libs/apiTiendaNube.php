@@ -33,7 +33,7 @@ class apiTiendaNube{
         }
         catch(PDOException $e){
 
-            error_log('Api_Tienda_Nube::getAuth -> PDO EXCEPTION -> '. $e);
+          // error_log('Api_Tienda_Nube::getAuth -> PDO EXCEPTION -> '. $e);
 
             return false;
         }

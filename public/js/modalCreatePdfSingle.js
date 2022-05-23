@@ -34,9 +34,9 @@ createPdfBtn.addEventListener("click", async function (e) {
 
     let response = await asyncCreatePdf('/gestor-final/order/createpdf', params);
 
-    console.log('redirect')
+  //console.log('redirect')
     if (response.status == 200) {
-        console.log('redirect')
+      //console.log('redirect')
         window.open('/gestor-final/downloadpdf/' + response.url , '_blank');
 
         modalPdf.style.display = "none";

@@ -39,7 +39,7 @@ class orders extends Controllers
             $filters = explode(',', $this->getPost('filters'));
 
             if ($ordersId != '' || !empty($ordersId) || $filters != '' || !empty($filters)) {
-                error_log('orders::createXLSX');
+              // error_log('orders::createXLSX');
                 $orders = new ordersEntity($this->user->getTienda());
                 $xlsx = $orders->genXLSX($ordersId, $filters);
                 echo json_encode(['status' => 200, 'url' => $xlsx]);
@@ -92,7 +92,7 @@ class orders extends Controllers
     public function createFulfillments()
     {
         header('Content-Type: application/json');
-        error_log('ORDERS::createFulfillments');
+      // error_log('ORDERS::createFulfillments');
         if ($this->existPOST(['ordersId', 'inputDescription', 'inputCity', 'inputState', 'inputCountry', 'inputHappendAt', 'inputEstimated'])) {
             $ordersId = $this->getPost('ordersId');
             $ordersId = explode(',', $ordersId);

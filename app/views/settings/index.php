@@ -59,10 +59,10 @@ $customZones = $this -> data['customZones'] ;
                 Custom zones
             </div>
 
-            <div class="w-full flex wrap p-8">
+            <div class="w-full flex flex-wrap p-8">
 
                 <?php for ($i = 0 ; $i < sizeof($customZones); $i++):?>
-                <div class="w-1/2 m-2 p-4 border-2 hover:shadow-lg hover:shadow-gray-200/50">
+                <div class=" m-1 p-4 border-2 hover:shadow-lg hover:shadow-gray-200/50" style="width: 24%;">
                     <div class=" float-right">
                         <svg xmlns="http://www.w3.org/2000/svg" class="eliminateZone h-6 w-6 hover:stroke-red-500 hover:shadow-lg" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor" stroke-width="2" data-zone-id="<?php echo $customZones[$i]['id'] ?>">

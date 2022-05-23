@@ -32,11 +32,11 @@ class loginModel extends Models{
                 $user -> from ( $item );
 
                 if (password_verify( $password , $user -> getPassword()  )){
-                    error_log( 'LoginModel::login -> Success' );
+                  // error_log( 'LoginModel::login -> Success' );
                     return $user;
                 }
                 else{
-                    error_log( 'LoginModel::login -> Failed' );
+                  // error_log( 'LoginModel::login -> Failed' );
                     return NULL;
                 }
             }
@@ -44,7 +44,7 @@ class loginModel extends Models{
         }
         catch(PDOException $e){
 
-            error_log('login_Model::login -> PDO EXCEPTION -> '. $e);
+          // error_log('login_Model::login -> PDO EXCEPTION -> '. $e);
 
             return false;
         }

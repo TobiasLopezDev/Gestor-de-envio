@@ -219,8 +219,8 @@ $router -> get('/download/{filename}', function($filename){
     $controller = new orders($user);
     $file = dirname(__FILE__) . '/../temp/xlsx/' .$filename;
 
-    error_log('URL xlsx => '.$file);
-    error_log('FILE xlsx => '.$filename);
+  // error_log('URL xlsx => '.$file);
+  // error_log('FILE xlsx => '.$filename);
 
     $controller -> downloadXLSX($file , $filename);
 
@@ -241,8 +241,8 @@ $router -> get('/downloadpdf/{filename}', function($filename){
 
     $file = dirname(__FILE__) . '/../temp/pdf/' .$filename;
 
-    error_log('URL => '.$file);
-    error_log('FILE => '.$filename);
+  // error_log('URL => '.$file);
+  // error_log('FILE => '.$filename);
 
     $controller -> downloadPDF($file , $filename);
 

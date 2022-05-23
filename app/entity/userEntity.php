@@ -45,7 +45,7 @@ class userEntity extends Models{
             return true;
         }
         catch (PDOException $e){
-            error_log('USERMODEL::SAVE -> PDOEXCEPTION : '. $e );
+          // error_log('USERMODEL::SAVE -> PDOEXCEPTION : '. $e );
             return false;
         }
 
@@ -75,7 +75,7 @@ class userEntity extends Models{
             return $items;
         } 
         catch (PDOException $e) {
-            error_log('USERMODEL::getAll -> PDOEXCEPTION : '. $e );
+          // error_log('USERMODEL::getAll -> PDOEXCEPTION : '. $e );
             return false;
         }
 
@@ -103,7 +103,7 @@ class userEntity extends Models{
             return $this;
 
         } catch (PDOException $e) {
-            error_log('USERMODEL::getID -> PDOEXCEPTION : ' . $e);
+          // error_log('USERMODEL::getID -> PDOEXCEPTION : ' . $e);
             return false;
         }
     }
@@ -120,7 +120,7 @@ class userEntity extends Models{
             return TRUE;
 
         } catch (PDOException $e) {
-            error_log('USERMODEL::Delete -> PDOEXCEPTION : ' . $e);
+          // error_log('USERMODEL::Delete -> PDOEXCEPTION : ' . $e);
             return FALSE;
         }
 
@@ -142,7 +142,7 @@ class userEntity extends Models{
             return TRUE;
 
         } catch (PDOException $e) {
-            error_log('USERMODEL::update -> PDOEXCEPTION : ' . $e);
+          // error_log('USERMODEL::update -> PDOEXCEPTION : ' . $e);
             return FALSE;
         }
 
@@ -178,7 +178,7 @@ class userEntity extends Models{
             }
 
         } catch (PDOException $e) {
-            error_log('USERMODEL::exists -> PDOEXCEPTION : ' . $e);
+          // error_log('USERMODEL::exists -> PDOEXCEPTION : ' . $e);
             return FALSE;
         }
 
@@ -192,7 +192,7 @@ class userEntity extends Models{
             
         }
         catch (PDOException $e) {
-            error_log('USERMODEL::comparePasswords -> PDOEXCEPTION : ' . $e);
+          // error_log('USERMODEL::comparePasswords -> PDOEXCEPTION : ' . $e);
             return FALSE;
         }
     }

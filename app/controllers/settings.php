@@ -66,7 +66,7 @@ class settings extends Controllers
     {
 
         if ($this->existPOST(['idZone'])) {
-            error_log( $this->getPost('idZone'));
+          // error_log( $this->getPost('idZone'));
             $customZones = new customZonesEntity();
             $customZones->id_tienda = $this->user->getTienda();
 

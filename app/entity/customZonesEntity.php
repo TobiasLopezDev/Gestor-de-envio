@@ -5,6 +5,7 @@ use PDO;
 use PDOException;
 use app\libs\Models;
 use app\libs\apiBrasil;
+use Error;
 
 class customZonesEntity extends Models {
 
@@ -22,8 +23,16 @@ class customZonesEntity extends Models {
     function createZone($name , $zones){
         try{
             $this -> setting_key = "Custom_Zone";
-            $array = ['name' => $name , "zones" => json_encode ($zones)];
+            $array = ['name' => $name , "zones" => json_encode ($zones) ];
+            
             $this -> setting_value = json_encode($array);
+          // error_log($this -> setting_value);
+
+            $this -> setting_value  = $this -> utf8_converter($array );
+
+            $this -> setting_value  = json_encode($this -> setting_value , JSON_PARTIAL_OUTPUT_ON_ERROR);
+
+          // error_log('UTF8 BUG =>' . $this -> setting_value);
 
             $query = $this -> prepare('INSERT INTO settings ( setting_key , setting_value , id_tienda) VALUES ( :setting_key , :setting_value , :id_tienda)');
             $query -> execute([
@@ -36,16 +45,27 @@ class customZonesEntity extends Models {
             return true;
         }
         catch (PDOException $e){
-            error_log('USERMODEL::SAVE -> PDOEXCEPTION : '. $e );
+          // error_log('USERMODEL::SAVE -> PDOEXCEPTION : '. $e );
             return false;
         }
     }
+
+    private function utf8_converter($array) {
+        array_walk_recursive($array, function(&$item, $key) {
+            if (!mb_detect_encoding($item, 'utf-8', true)) {
+                $item = utf8_encode($item);
+            }
+        });
+    
+        return $array;
+    }
+    
 
     function getCustomZoneSettings(){
         try{
             $this -> setting_key = "Custom_Zone";
 
-            $query = $this -> prepare('SELECT * FROM `settings` WHERE `setting_key` LIKE :setting_key AND `id_tienda` = :id_tienda ');
+            $query = $this -> prepare('SELECT * FROM `settings` WHERE `setting_key` = :setting_key AND `id_tienda` = :id_tienda ');
             $query -> execute([
                 'setting_key'    => $this -> setting_key,
                 'id_tienda'      => $this -> id_tienda
@@ -64,7 +84,7 @@ class customZonesEntity extends Models {
 
         }
         catch (PDOException $e){
-            error_log('USERMODEL::SAVE -> PDOEXCEPTION : '. $e );
+          // error_log('USERMODEL::SAVE -> PDOEXCEPTION : '. $e );
             return false;
         }
     }
@@ -72,14 +92,16 @@ class customZonesEntity extends Models {
     function getArrayAllZones(){
 
         $custom_zones = $this -> getCustomZoneSettings();
-        
-        
+        // echo '<pre>';
+        // var_dump($custom_zones);
+        // exit();
         $todasZonas = [];
 
         for ($i=0; $i < sizeof($custom_zones) ; $i++) { 
-            $zona = ['id' => $custom_zones[$i]['id'],'nombre' => $custom_zones[$i]['value'] -> name , 'zonas' => json_decode($custom_zones[$i]['value'] -> zones)];
+            $zona = ['id' => $custom_zones[$i]['id'],
+            'nombre' => $custom_zones[$i]['value'] -> name , 
+            'zonas' => json_decode($custom_zones[$i]['value'] -> zones)];
 
-            
             array_push($todasZonas , $zona);
         }
 
@@ -165,7 +187,7 @@ class customZonesEntity extends Models {
             return true;
         }
         catch (PDOException $e){
-            error_log('customZonesEntity::deleteZone -> PDOEXCEPTION : '. $e );
+          // error_log('customZonesEntity::deleteZone -> PDOEXCEPTION : '. $e );
             return false;
         }
     }

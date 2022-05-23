@@ -62,7 +62,7 @@ createShippingsBtn.addEventListener('click', async function (e){
     modalBodyShippings.style.display = "hidden";
     response = await asyncCreateShippings('/gestor-final/order/createshippings' , params);
 
-    console.log(response.status)
+  //console.log(response.status)
 
     if(response.status == 200){
         location.reload();
