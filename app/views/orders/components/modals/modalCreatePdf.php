@@ -1,5 +1,5 @@
 <?php
-namespace app\views\orders\components;
+namespace app\views\orders\components\modals;
 
 class modalCreatePdf{
     function __construct()

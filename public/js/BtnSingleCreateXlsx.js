@@ -37,11 +37,8 @@ createExcelBtn.addEventListener('click' , async function(){
 
 
     if (request.status == 200) {
-        // //console.log("hecho");
-
-        // //console.log(request.url);
         window.open('http://localhost/gestor-final/download/'+ request.url, '_blank');
-
+        document.getElementById("body").style.overflowY = "scroll";
         modalExcel.style.display = "none";
     }
 })

@@ -61,12 +61,32 @@ class orders extends Controllers
 
     public function createPDF()
     {
+        header('Content-Type: application/json');
         if ($this->existPOST(['ordersId'])) {
-            $ordersId = $this->getPost('OrdersId');
+            $ordersId = $this->getPost('ordersId');
 
             if ($ordersId == '' || empty($ordersId)) {
+            }else{
+
+                $ordersId = explode(',',$ordersId);
+
+                $orders = new ordersEntity($this->user->getTienda());
+
+                $response = $orders -> genPdf($ordersId);
+                echo json_encode(['status' => 200, 'url' => $response]);
+                return;
             }
         }
+    }
+
+    public function downloadPDF($zipName,$filename){
+        header("Content-Type: application/zip");
+        header("Content-Disposition: attachment; filename=$filename");
+        header("Content-Length: " . filesize($zipName));
+
+        readfile($zipName);
+        unlink($zipName);
+        exit;
     }
 
     public function createFulfillments()
@@ -102,10 +122,10 @@ class orders extends Controllers
 
     public function createShippings()
     {
-        error_log('ORDERS::createShippings');
+        $data = [];
         header('Content-Type: application/json');
         if ($this->existPOST(['ordersId', 'checkNotification', 'checkTracking']) || $this->existPOST(['ordersId', 'checkNotification', 'inputTrackingCode'])) {
-            $data['ordersId'] = $this->getPost('ordersId');
+            $data['ordersId'] = explode (',',$this->getPost('ordersId'));
             $data['checkNotification'] = $this->getPost('checkNotification');
             $data['checkTracking'] = $this->getPost('checkTracking');
 
@@ -117,7 +137,8 @@ class orders extends Controllers
 
             $this->idTienda = $this->user->getTienda();
             $orders = new ordersEntity($this->idTienda);
-            $response = $orders->createShipping();
+
+            $response = $orders->createShipping($data);
 
             echo json_encode($response);
             return;
@@ -126,4 +147,5 @@ class orders extends Controllers
             return;
         }
     }
+
 }

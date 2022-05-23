@@ -1,5 +1,5 @@
 <?php
-namespace app\views\orders\components;
+namespace app\views\orders\components\modals;
 
 class modalCreateShippings{
     function __construct()
@@ -9,7 +9,7 @@ class modalCreateShippings{
 
     <!--modal content-->
     <div class="relative m-auto p-5 border shadow-lg rounded-md bg-white" style="width:auto">
-        <div id="loader" style="display: none ; width:200px" class="m-3 h-auto">
+        <div id="loader-shippings" style="display: none ; width:200px" class="m-3 h-auto">
             <svg class="circular-loader" viewBox="25 25 50 50">
                 <circle class="loader-path" cx="50" cy="50" r="20" fill="none" stroke="#000000" stroke-width="2" />
             </svg>

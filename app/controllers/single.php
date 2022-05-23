@@ -20,24 +20,17 @@ class single extends Controllers{
         $this -> idTienda = $this -> user -> getTienda();
         $this -> orderId  = $orderId; 
 
-        // error_log('Single::index => idtienda wtf?' . $this-> idTienda .' '.$this->orderId);
-        // error_log($this->orderId);
-
         
         if ($this -> idTienda == '' || empty($this -> idTienda) || $this -> orderId == ''||  empty($this -> orderId)){
 
-            // $this->redirect('orders' );
-            // error_log('Single::index => idtienda "" .');
+            $this->redirect('orders' );
 
         }
         else {
-            // error_log('Single::index => ordersEntity .');
-            
+
             $order = new ordersEntity($this -> idTienda);
 
             $orderData = $order -> getOrderById($orderId);
-
-            // error_log('Single::index => orderData'. json_encode($orderData));
 
 
             if( $orderData ['shipping_status'] == 'shipped'){
@@ -47,8 +40,6 @@ class single extends Controllers{
                 $data['fulfillments'] = $fulfillments -> getAllFulfillments($orderId);
 
             }
-
-            // $this -> view -> orderData = $orderData ;
 
             $data['order'] = $orderData;
 

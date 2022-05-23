@@ -1,5 +1,5 @@
 <?php
-namespace app\views\orders\components;
+namespace app\views\single\components;
 
 class modalCreatePdf{
     function __construct()
@@ -47,7 +47,7 @@ class modalCreatePdf{
     </div>
 </div>
 
-<script src="<?php echo $_ENV['URL']?>public/js/modalCreatePdf.js"></script>
+<script src="<?php echo $_ENV['URL']?>public/js/modalCreatePdfSingle.js"></script>
 <?php
     }
 }

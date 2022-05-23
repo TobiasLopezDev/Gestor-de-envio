@@ -42,7 +42,7 @@ formCreateFulfillment.addEventListener('submit', async function (e) {
     //console.log(params.values())
 
     if (valideteFormFulfillments(params)) {
-       let response = await asynPOST('http://localhost/gestor-final/single/postFulfillments', params);
+       let response = await asynPOST('/gestor-final/orders/createFulfillments', params);
        if(response.status == 201){
         location.reload();
        }
@@ -125,32 +125,34 @@ window.onload = function () {
     });
 };
 
-// function valideteFormFulfillments(formData) {
-//     inputNoValidate = [];
+function valideteFormFulfillments(formData) {
+    inputNoValidate = [];
 
-//     for (var key of formData.keys()) {
-//         if (key == 'inputDescription') {
-            
-//         }
-//         else {
-//             if (formData.get(key) == '') {
-//                 inputNoValidate.push(key)
-//                 document.getElementById(key).setAttribute("aria-invalid", "true");
-//                 document.getElementById(key).classList.add("border-red-700");
-//                 //console.log(key + "add class" )
-//             }
-//         }
-//     }
+    for (var key of formData.keys()) {
+        if (key == 'inputDescription') {
+        }
+        else {
+            if (formData.get(key) == '') {
+                inputNoValidate.push(key)
+                document.getElementById(key).classList.add("ring-1");
+                document.getElementById(key).classList.add("ring-red-700");
+                document.getElementById(key).classList.add("ring-offset-2");
+            }else{
+                // formData.get(key)
+                // document.getElementById(key).classList.remove("ring-1");
+                // document.getElementById(key).classList.remove("ring-red-700");
+                // document.getElementById(key).classList.remove("ring-offset-2");
+            }
+        }
+    }
 
-//     if (inputNoValidate.length > 0) {
-//         //console.log(inputNoValidate)
-//         return false
-//     }
-//     else {
-//         //console.log(inputNoValidate)
-//         return true;
-//     }
+    if (inputNoValidate.length > 0) {
+        return false
+    }
+    else {
+        //console.log(inputNoValidate)
+        return true;
+    }
 
-// }
-
+}
 

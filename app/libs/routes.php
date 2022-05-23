@@ -208,19 +208,42 @@ $router -> get('/download/{filename}', function($filename){
     global $user;
 
     $controller = new orders($user);
-    $file = 'C:\xampp\htdocs\gestor-final\app\entity/../temp/xlsx/'.$filename;
+    $file = dirname(__FILE__) . '/../temp/xlsx/' .$filename;
+
+    error_log('URL xlsx => '.$file);
+    error_log('FILE xlsx => '.$filename);
 
     $controller -> downloadXLSX($file , $filename);
 
 });
 
-$router -> get('/pdf' , function (){
-    $test = new ordersEntity(9);
-    $pdfs = $test -> genPDF([561938161,556922930]);
+$router -> post('/order/createpdf' , function (){
+    global $user;
 
-    var_dump($pdfs);
+    $controller = new orders($user);
+    $controller -> createPDF($_POST);
+
 });
 
+$router -> get('/downloadpdf/{filename}', function($filename){
+    global $user;
+
+    $controller = new orders($user);
+
+    $file = dirname(__FILE__) . '/../temp/pdf/' .$filename;
+
+    error_log('URL => '.$file);
+    error_log('FILE => '.$filename);
+
+    $controller -> downloadPDF($file , $filename);
+
+});
+
+$router -> post('/order/createshippings' , function (){
+    global $user;
+    $controller = new orders($user);
+    $controller -> createShippings($_POST);
+});
 
 
 

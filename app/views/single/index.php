@@ -4,6 +4,7 @@ use app\views\footerTemplate;
 use app\views\components\menu;
 
 use app\views\single\components\modalCreateExcel;
+use app\views\single\components\modalCreatePdf;
 
 use app\views\single\components\createFulfillments;
 use app\views\single\components\fulfillments;
@@ -130,13 +131,13 @@ $order = $this-> data['order'];
 
         </div>
     </div>
-<pre>
-<?php var_dump($order)?>
+
 
 </main>
 
 <?php new modalDeleteFulfillments(); ?>
 <?php new modalCreateExcel(); ?>
+<?php new modalCreatePdf(); ?>
 
 
 <?php  new footerTemplate(); ?>

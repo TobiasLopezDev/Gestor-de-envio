@@ -225,9 +225,13 @@ class ordersEntity extends Models
 
             if (!empty($errores)){
                 array_push($respuesta , $errores);
+                $responseFinal['status'] = 203;
+            }else{
+                $responseFinal['status'] = 200;
+                $responseFinal['orders'] = $respuesta;
             }
     
-            return $respuesta;    
+            return $responseFinal;    
        }    
     }
     
@@ -270,7 +274,8 @@ class ordersEntity extends Models
             array_push($pdfs , 'Order-'.$order["number"].'.pdf');
         }
 
-        $this->createZIP($pdfs);
+        $filename = $this->createZIP($pdfs);
+        return $filename;
     }
 
     private function createZIP($pdfs){
@@ -294,17 +299,7 @@ class ordersEntity extends Models
         }
 
         $file_name = basename($zipName);
-
-        $this -> downloadPdfs($zipName,$file_name);
-    }
-
-    private function downloadPDFS($zipName , $file_name){
-        header("Content-Type: application/zip");
-        header("Content-Disposition: attachment; filename=$file_name");
-        header("Content-Length: " . filesize($zipName));
-        readfile($zipName);
-        unlink($zipName);
-        exit;
+        return $file_name;
     }
 
     

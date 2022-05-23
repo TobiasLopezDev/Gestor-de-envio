@@ -107,7 +107,7 @@ class fulfillments{
             <div id="form-create" class="w-full hidden">
                 <form id="form-create-fulfillment" method="post">
 
-                    <input type="hidden" name="inputOrderId" value="" id="orderIdForm">
+                    <input type="hidden" name="ordersId" value="" id="orderIdForm">
 
                     <div class="form-group mb-6">
                         <select
