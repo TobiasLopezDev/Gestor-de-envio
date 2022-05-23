@@ -91,6 +91,6 @@ class settings extends Controllers
     }
 
     public function userIndex(){
-        $this->render('settings/user', ['customZones' => $this->customZones]);
+        $this->render('settings/user', ['user' => $this->user]);
     }
 }

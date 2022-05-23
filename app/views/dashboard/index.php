@@ -20,7 +20,8 @@ new menu();
             <div class="bg-gray-900 w-full shadow-lg rounded-t-lg overflow-hidden p-4 text-white text-center">
                 Orders Stats
             </div>
-            <div class="shadow-lg rounded-lg overflow-hidden">
+
+            <div class="shadow-lg w-full rounded-lg overflow-hidden" id="stats">
                 <canvas class="p-10" id="orderStats"></canvas>
             </div>
 
@@ -197,6 +198,11 @@ new menu();
             </div>
         </div> -->
 
+        <style>
+            #stats canvas{
+                width: 100% !important;
+            }
+        </style>
     </div>
 
     
