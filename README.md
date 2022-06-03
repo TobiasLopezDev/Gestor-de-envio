@@ -1,0 +1,1 @@
+App web desarrollada mayormente en PHP consumiendo la API de tienda nube con una arquitectura de software en MVC. 
