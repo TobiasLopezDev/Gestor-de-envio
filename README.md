@@ -1,4 +1,0 @@
-- CREAR AUTH
-- CREATE SHIPPER
-
-

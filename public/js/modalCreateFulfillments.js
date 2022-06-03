@@ -11,9 +11,11 @@ let containerFulfillemnts = document.getElementById("containerFulfillemnts");
 let loaderFulfillments = document.getElementById("loaderFulfillments");
 let botoneraFulfillments = document.getElementById("botoneraFulfillments");
 
-cancelFulfillmentsBtn.addEventListener('click' ,function (e){
+cancelFulfillmentsBtn.addEventListener('click', function (e) {
     e.preventDefault();
     modalFulfillments.style.display = "none";
+
+    location.reload();
 });
 
 createFulfillmentsBtn.addEventListener('click', async function (event) {
@@ -23,20 +25,20 @@ createFulfillmentsBtn.addEventListener('click', async function (event) {
     params = new FormData(formCreateFulfillment);
     params.append('ordersId', ordersAction);
 
-     if (valideteFormFulfillments(params)) {
+    if (valideteFormFulfillments(params)) {
         containerFulfillemnts.classList.add("hidden");
         botoneraFulfillments.classList.add("hidden");
         loaderFulfillments.classList.remove("hidden");
 
         let response = await asyncCreateFulfillments('http://localhost/gestor-final/orders/createFulfillments', params);
 
-        if(response.code == 201){
-            titleFulfillments.innerHTML="Estado de envio creados";
+        if (response.code == 201) {
+            titleFulfillments.innerHTML = "Estado de envio creados";
             containerFulfillemnts.innerHTML = "";
             response.success.forEach(order => {
                 var divResponse = document.createElement("div");
-                divResponse.innerHTML = '<p>Order #'+order.numberOrder+' actualizada con exito.</p>'
-                containerFulfillemnts.appendChild(divResponse); 
+                divResponse.innerHTML = '<p>Order #' + order.numberOrder + ' actualizada con exito.</p>'
+                containerFulfillemnts.appendChild(divResponse);
             });
             createFulfillmentsBtn.classList.add("hidden");
             loaderFulfillments.classList.add("hidden");
@@ -44,14 +46,12 @@ createFulfillmentsBtn.addEventListener('click', async function (event) {
             botoneraFulfillments.classList.remove("hidden");
             containerFulfillemnts.classList.remove("hidden");
         }
-        else{
-        //   todo mal
+        else {
         }
-     }
-     else {
-         //console.log("invalido")
+    }
+    else {
 
-     }
+    }
 
 });
 
@@ -78,7 +78,7 @@ function valideteFormFulfillments(formData) {
                 document.getElementById(key).classList.add("ring-1");
                 document.getElementById(key).classList.add("ring-red-700");
                 document.getElementById(key).classList.add("ring-offset-2");
-            }else{
+            } else {
                 // formData.get(key)
                 // document.getElementById(key).classList.remove("ring-1");
                 // document.getElementById(key).classList.remove("ring-red-700");

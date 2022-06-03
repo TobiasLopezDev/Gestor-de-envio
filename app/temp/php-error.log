@@ -1,0 +1,14 @@
+[24-May-2022 00:09:34 Europe/Berlin] PHP Notice:  Undefined index: user in C:\xampp\htdocs\gestor-final\app\libs\routes.php on line 20
+[24-May-2022 00:09:34 Europe/Berlin] PHP Notice:  Undefined index: user in C:\xampp\htdocs\gestor-final\app\libs\routes.php on line 101
+[24-May-2022 00:09:34 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to app\controllers\orders::__construct() must be an instance of app\entity\userEntity, bool given, called in C:\xampp\htdocs\gestor-final\app\libs\routes.php on line 103 and defined in C:\xampp\htdocs\gestor-final\app\controllers\orders.php:13
+Stack trace:
+#0 C:\xampp\htdocs\gestor-final\app\libs\routes.php(103): app\controllers\orders->__construct(false)
+#1 [internal function]: {closure}()
+#2 C:\xampp\htdocs\gestor-final\vendor\bramus\router\src\Bramus\Router\Router.php(458): call_user_func_array(Object(Closure), Array)
+#3 C:\xampp\htdocs\gestor-final\vendor\bramus\router\src\Bramus\Router\Router.php(440): Bramus\Router\Router->invoke(Object(Closure), Array)
+#4 C:\xampp\htdocs\gestor-final\vendor\bramus\router\src\Bramus\Router\Router.php(287): Bramus\Router\Router->handle(Array, true)
+#5 C:\xampp\htdocs\gestor-final\app\libs\routes.php(260): Bramus\Router\Router->run()
+#6 C:\xampp\htdocs\gestor-final\index.php(13): require('C:\\xampp\\htdocs...')
+#7 {main}
+  thrown in C:\xampp\htdocs\gestor-final\app\controllers\orders.php on line 13
+[24-May-2022 00:09:34 Europe/Berlin] PHP Notice:  Undefined index: user in C:\xampp\htdocs\gestor-final\app\libs\routes.php on line 20
